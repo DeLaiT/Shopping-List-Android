@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#eee"
+        tools:context=".MainActivity">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:fontFamily="@font/bold"
+            android:text="Shopping lists"
+            android:textColor="#000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/search_container"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_container" />
+
+        <ImageView
+            android:id="@+id/add_shopping_list_button"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="12dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_round_add_24px"
+            app:layout_constraintBottom_toBottomOf="@+id/search_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_container" />
+
+        <LinearLayout
+            android:id="@+id/search_container"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/button_bg_round"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_round_shopping_basket_24px"
+                android:tint="#2979FE" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/add_shopping_list_et"
+                android:layout_width="0dp"
+                android:inputType="text"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:lines="1"
+                android:imeOptions="actionSend"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null" />
+
+            <ImageView
+                android:id="@+id/close_add_shopping_list_dialog"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_round_close_24px" />
+        </LinearLayout>
+
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_container">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/shopping_list_view" />
+
+                <include layout="@layout/shopping_list_view" />
+
+                <include layout="@layout/shopping_list_view" />
+
+                <include layout="@layout/shopping_list_view" />
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
