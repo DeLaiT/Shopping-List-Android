@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#eee"
+        android:background="@color/md_grey_200"
         tools:context=".MainActivity">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -69,6 +69,7 @@
                 android:layout_width="42dp"
                 android:layout_height="42dp"
                 android:padding="8dp"
+                android:tint="#888"
                 android:src="@drawable/ic_round_close_24px" />
         </LinearLayout>
 
