@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
             animateInputBarWidth(targetWidth)
             binding.addShoppingListEt.requestFocus()
+            binding.addShoppingListEt.setText("")
             showKeyboard()
         }
         binding.closeAddShoppingListDialog.setOnClickListener {

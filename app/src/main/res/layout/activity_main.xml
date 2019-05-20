@@ -59,6 +59,8 @@
                 android:singleLine="true"
                 android:maxLines="1"
                 android:lines="1"
+                android:fontFamily="@font/regular"
+                android:hint="New shopping list"
                 android:imeOptions="actionSend"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -68,8 +70,8 @@
                 android:id="@+id/close_add_shopping_list_dialog"
                 android:layout_width="42dp"
                 android:layout_height="42dp"
-                android:padding="8dp"
-                android:tint="#888"
+                android:padding="10dp"
+                android:tint="#aaa"
                 android:src="@drawable/ic_round_close_24px" />
         </LinearLayout>
 
