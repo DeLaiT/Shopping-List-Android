@@ -29,6 +29,10 @@ class MainActivityViewModel : ViewModel() {
         Timber.d("Created shopping list with name: $name")
     }
 
+    fun loadShoppingLists() {
+        syncShoppingListsWithDatabase()
+    }
+
     private fun syncShoppingListsWithDatabase() {
         val shoppingListResults = realm.where(ShoppingList::class.java).findAll()
         val shoppingLists = ArrayList<ShoppingList>()

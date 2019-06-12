@@ -6,7 +6,6 @@ import android.view.animation.DecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import pl.jergro.shopinglist.databinding.ActivityMainBinding
 import pl.jergro.shopinglist.models.ShoppingList
@@ -23,8 +22,10 @@ class MainActivity : AppCompatActivity() {
     var addShoppingListDialogVisible = false
 
     val shoppingListsObserver = Observer<ArrayList<ShoppingList>> { shoppingLists ->
-        shoppingLists.forEach {
-            Timber.v(it.name)
+        Timber.d("Received shopping lists list update")
+        shoppingLists.forEach { shoppingList ->
+            Timber.v(shoppingList.name)
+            addShoppingListViewToList(shoppingList)
         }
     }
 
@@ -44,12 +45,13 @@ class MainActivity : AppCompatActivity() {
         viewmodel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
 
         setupListeners()
+        viewmodel.loadShoppingLists()
     }
 
 
     private fun setupListeners() {
         binding.toggleAddShoppingListButton.setOnClickListener {
-           toggleShoppingListContainer()
+            toggleShoppingListContainer()
         }
 
         binding.confirmNewShoppingList.setOnClickListener {
@@ -61,8 +63,8 @@ class MainActivity : AppCompatActivity() {
     private fun createNewShoppingList() {
         val shoppingListName = binding.addShoppingListEt.text.toString()
 
-        if(shoppingListName.isBlank()) return
-        if(viewmodel.shoppingListExistsWithName(shoppingListName)) return
+        if (shoppingListName.isBlank()) return
+        if (viewmodel.shoppingListExistsWithName(shoppingListName)) return
 
         viewmodel.createShoppingListWithName(shoppingListName)
     }
@@ -88,6 +90,14 @@ class MainActivity : AppCompatActivity() {
                 else R.drawable.ic_round_add_24px
             )
         )
+    }
+
+    private fun addShoppingListViewToList(shoppingList: ShoppingList) {
+        val shoppingListView = ShoppingListView(this)
+
+        shoppingListView.bind(shoppingList)
+
+        binding.shoppingListsList.addView(shoppingListView)
     }
 
     private fun animateInputBarWidth(targetWidth: Int) {

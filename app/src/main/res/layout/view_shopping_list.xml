@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="shoppingList"
+            type="pl.jergro.shopinglist.models.ShoppingList" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        tools:background="@drawable/list_item_background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/medium"
+            android:text="@{shoppingList.name}"
+            android:textColor="@color/md_grey_900"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Monday shopping" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="11dp"
+            android:background="@color/md_grey_200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/itemsDoneText"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <View
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:background="@color/md_blue_A400" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/itemsDoneText"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/medium"
+            android:gravity="center"
+            android:textColor="@color/md_grey_500"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="100 / 210" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

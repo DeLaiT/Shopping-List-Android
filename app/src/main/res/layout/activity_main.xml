@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="68dp"
-            android:fontFamily="@font/bold"
+            android:fontFamily="@font/medium"
             android:text="Shopping lists"
             android:textColor="#000"
             android:textSize="20sp"
@@ -55,16 +55,17 @@
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/add_shopping_list_et"
                 android:layout_width="0dp"
-                android:inputType="text"
-                android:singleLine="true"
-                android:maxLines="1"
-                android:lines="1"
-                android:fontFamily="@font/regular"
-                android:hint="New shopping list"
-                android:imeOptions="actionSend"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@null" />
+                android:background="@null"
+                android:fontFamily="@font/regular"
+                android:hint="New shopping list"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/confirm_new_shopping_list"
@@ -72,8 +73,8 @@
                 android:layout_height="42dp"
                 android:paddingStart="6dp"
                 android:paddingEnd="10dp"
-                android:tint="@color/md_blue_A400"
-                android:src="@drawable/ic_round_check_24px" />
+                android:src="@drawable/ic_round_check_24px"
+                android:tint="@color/md_blue_A400" />
         </LinearLayout>
 
 
