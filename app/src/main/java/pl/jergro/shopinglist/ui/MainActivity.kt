@@ -1,4 +1,4 @@
-package pl.jergro.shopinglist
+package pl.jergro.shopinglist.ui
 
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ActivityMainBinding
 import pl.jergro.shopinglist.models.ShoppingList
 import pl.jergro.shopinglist.utils.dp
