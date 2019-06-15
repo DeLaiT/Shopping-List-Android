@@ -12,7 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="58dp"
         tools:background="@drawable/list_item_background">
 
         <TextView
@@ -32,32 +32,34 @@
             android:layout_width="0dp"
             android:layout_height="4dp"
             android:layout_marginStart="12dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="11dp"
-            android:background="@color/md_grey_200"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/button_bg_round"
+            android:backgroundTint="@color/md_blue_100"
+            app:layout_constraintBottom_toBottomOf="@+id/itemsDoneText"
             app:layout_constraintEnd_toStartOf="@id/itemsDoneText"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/itemsDoneText">
 
             <View
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
-                android:background="@color/md_blue_A400" />
+                android:background="@drawable/button_bg_round"
+                android:backgroundTint="@color/md_blue_A400" />
         </FrameLayout>
 
         <TextView
             android:id="@+id/itemsDoneText"
-            android:layout_width="68dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:fontFamily="@font/medium"
             android:gravity="center"
-            android:textColor="@color/md_grey_500"
-            android:textSize="16sp"
+            android:text="10 / 21"
+            android:textColor="@color/md_grey_800"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="100 / 210" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

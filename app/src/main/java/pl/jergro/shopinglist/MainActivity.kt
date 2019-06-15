@@ -1,6 +1,7 @@
 package pl.jergro.shopinglist
 
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.animation.DecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupListeners() {
         binding.toggleAddShoppingListButton.setOnClickListener {
             toggleShoppingListContainer()
@@ -94,7 +96,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun addShoppingListViewToList(shoppingList: ShoppingList) {
         val shoppingListView = ShoppingListView(this)
-
         shoppingListView.bind(shoppingList)
 
         binding.shoppingListsList.addView(shoppingListView)

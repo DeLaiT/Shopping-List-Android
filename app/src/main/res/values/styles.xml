@@ -5,8 +5,8 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor">#eee</item>
+        <item name="colorAccent">@color/md_blue_A400</item>
+        <item name="android:statusBarColor">@color/md_white_1000</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
