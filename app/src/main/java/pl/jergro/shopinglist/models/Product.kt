@@ -7,5 +7,5 @@ open class Product(
     var done: Boolean,
     var price: Double
 ) : RealmObject() {
-
+    constructor() : this("undefined", false, 0.0)
 }

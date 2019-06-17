@@ -3,12 +3,12 @@ package pl.jergro.shopinglist.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.realm.Realm
+import io.realm.RealmList
 import pl.jergro.shopinglist.models.ShoppingList
 import timber.log.Timber
 
 class MainActivityViewModel : ViewModel() {
     val shoppingListsObservable = MutableLiveData<ArrayList<ShoppingList>>()
-
     private val realm = Realm.getDefaultInstance()
 
 
@@ -19,7 +19,7 @@ class MainActivityViewModel : ViewModel() {
     }
 
     fun createShoppingListWithName(name: String) {
-        val shoppingList = ShoppingList(name)
+        val shoppingList = ShoppingList(name, RealmList())
 
         realm.beginTransaction()
         realm.copyToRealm(shoppingList)

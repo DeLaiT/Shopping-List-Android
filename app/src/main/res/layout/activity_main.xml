@@ -13,77 +13,24 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="62dp"
-            android:fontFamily="@font/medium"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/bold"
             android:text="Shopping lists"
             android:textColor="#000"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/addShoppingListContainer"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/addShoppingListContainer" />
-
-        <ImageView
-            android:id="@+id/toggleAddShoppingListButton"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginEnd="8dp"
-            android:padding="4dp"
-            android:src="@drawable/ic_round_add_24px"
-            app:layout_constraintBottom_toBottomOf="@+id/addShoppingListContainer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/addShoppingListContainer" />
-
-        <LinearLayout
-            android:id="@+id/addShoppingListContainer"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/button_bg_round"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:padding="8dp"
-                android:src="@drawable/ic_round_shopping_basket_24px"
-                android:tint="#2979FE" />
-
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/add_shopping_list_et"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@null"
-                android:fontFamily="@font/regular"
-                android:hint="New shopping list"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:lines="1"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:textSize="16sp" />
-
-            <ImageView
-                android:id="@+id/confirm_new_shopping_list"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:paddingStart="6dp"
-                android:paddingEnd="10dp"
-                android:src="@drawable/ic_round_check_24px"
-                android:tint="@color/md_blue_A400" />
-        </LinearLayout>
-
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addShoppingListContainer">
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="0dp">
 
             <LinearLayout
                 android:id="@+id/shoppingListsList"
@@ -93,5 +40,67 @@
 
             </LinearLayout>
         </ScrollView>
+
+        <TextView
+            android:id="@+id/addShoppingListButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/round_button_background"
+            android:backgroundTint="@color/md_blue_A400"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_round_add_24px"
+            android:drawablePadding="8dp"
+            android:drawableTint="#fff"
+            android:elevation="4dp"
+            android:focusable="true"
+            android:fontFamily="@font/bold"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="10dp"
+            android:text="Add shopping list"
+            android:textColor="#fff"
+            app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bottomBar" />
+
+        <RelativeLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#fff"
+            android:elevation="3dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="12dp"
+                android:src="@drawable/ic_round_settings_24px"
+                android:tint="@color/md_grey_600" />
+
+            <ImageView
+                style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="12dp"
+                android:src="@drawable/ic_round_search_24px"
+                android:tint="@color/md_grey_600" />
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
