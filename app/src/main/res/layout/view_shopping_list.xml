@@ -3,26 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="shoppingList"
-            type="pl.jergro.shopinglist.models.ShoppingList" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="86dp"
         tools:background="@drawable/list_item_background">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/nameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/bold"
-            android:text="@{shoppingList.name}"
             android:textColor="@color/md_grey_900"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,9 +33,9 @@
             android:text="10 / 21"
             android:textColor="@color/md_grey_600"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/frameLayout"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintBottom_toTopOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="@+id/nameText"
+            app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
         <ImageView
             android:layout_width="42dp"
@@ -56,7 +48,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <FrameLayout
-            android:id="@+id/frameLayout"
+            android:id="@+id/progressBar"
             android:layout_width="0dp"
             android:layout_height="4dp"
             android:layout_marginStart="12dp"
@@ -69,6 +61,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <View
+                android:id="@+id/progressBarIndeterminate"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/round_button_background"

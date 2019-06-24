@@ -8,11 +8,14 @@ import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ViewShoppingListBinding
 import pl.jergro.shopinglist.models.ShoppingList
 import pl.jergro.shopinglist.utils.dp
+import kotlin.math.roundToInt
 
 class ShoppingListView(context: Context) : FrameLayout(context) {
     private val binding: ViewShoppingListBinding =
-        DataBindingUtil.inflate(LayoutInflater.from(context),
-            R.layout.view_shopping_list, this, true)
+        DataBindingUtil.inflate(
+            LayoutInflater.from(context),
+            R.layout.view_shopping_list, this, true
+        )
 
     init {
         visibility = INVISIBLE
@@ -33,6 +36,17 @@ class ShoppingListView(context: Context) : FrameLayout(context) {
     }
 
     fun bind(shoppingList: ShoppingList) {
-        binding.shoppingList = shoppingList
+        val productsDone = shoppingList.products.count { it.done }
+        val productsCount = shoppingList.products.size
+        val donePrecentage = if (productsCount == 0) 0.0 else productsDone.toDouble() / productsCount
+
+        binding.nameText.text = shoppingList.name
+        binding.itemsDoneText.text = "$productsDone / $productsCount - ${(donePrecentage * 100).toInt()}%"
+
+        post {
+            val params = binding.progressBarIndeterminate.layoutParams as LayoutParams
+            params.width = (binding.progressBar.width * donePrecentage).toInt()
+            binding.progressBarIndeterminate.layoutParams = params
+        }
     }
 }
