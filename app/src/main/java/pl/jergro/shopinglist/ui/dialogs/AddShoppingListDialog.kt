@@ -7,13 +7,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import pl.jergro.shopinglist.R
-import pl.jergro.shopinglist.databinding.ViewAddShoppingListBinding
+import pl.jergro.shopinglist.databinding.DialogAddShoppingListBinding
 import pl.jergro.shopinglist.utils.hideKeyboardFrom
 import pl.jergro.shopinglist.viewmodels.MainActivityViewModel
 
 @SuppressLint("ViewConstructor")
 class AddShoppingListDialog(val viewmodel: MainActivityViewModel, context: Context) : BottomSheetDialog(context) {
-    val binding = DataBindingUtil.inflate<ViewAddShoppingListBinding>(
+    val binding = DataBindingUtil.inflate<DialogAddShoppingListBinding>(
         LayoutInflater.from(context),
         R.layout.dialog_add_shopping_list,
         null,
@@ -37,7 +37,7 @@ class AddShoppingListDialog(val viewmodel: MainActivityViewModel, context: Conte
 
         when {
             newShoppingListName.isBlank() -> Toast.makeText(context, "Please enter correct shopping list name", Toast.LENGTH_SHORT).show()
-            viewmodel.shoppingListExistsWithName(newShoppingListName) -> Toast.makeText(context, "Shopping list with this name already exists!", Toast.LENGTH_SHORT).show()
+            viewmodel.shoppingListExistsWithName(newShoppingListName) -> Toast.makeText(context, "Shopping list with '$newShoppingListName' name already exists!", Toast.LENGTH_SHORT).show()
             else -> {
                 viewmodel.createShoppingListWithName(newShoppingListName)
                 hideKeyboardFrom(context, binding.newShoppingListNameEditText)
