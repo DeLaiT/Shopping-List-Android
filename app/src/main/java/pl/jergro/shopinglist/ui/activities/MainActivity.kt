@@ -1,31 +1,32 @@
-package pl.jergro.shopinglist.ui
+package pl.jergro.shopinglist.ui.activities
 
-import android.content.pm.ActivityInfo
 import android.graphics.Outline
 import android.os.Bundle
 import android.view.*
-import android.view.WindowManager.LayoutParams.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ActivityMainBinding
 import pl.jergro.shopinglist.models.ShoppingList
+import pl.jergro.shopinglist.ui.dialogs.AddShoppingListDialog
+import pl.jergro.shopinglist.ui.views.ShoppingListView
 import pl.jergro.shopinglist.utils.dp
+import pl.jergro.shopinglist.utils.hideKeyboard
 import pl.jergro.shopinglist.viewmodels.MainActivityViewModel
 import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
-    lateinit var viewmodel: MainActivityViewModel
-    lateinit var addShoppingListDialog: BottomSheetDialog
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var viewmodel: MainActivityViewModel
+    private lateinit var addShoppingListDialog: AddShoppingListDialog
 
-    val shoppingListsObserver = Observer<ArrayList<ShoppingList>> { shoppingLists ->
-        Timber.d("Received shopping lists list update")
+    private val shoppingListsObserver = Observer<ArrayList<ShoppingList>> { shoppingLists ->
+        removeAllItemsFromList()
+
         shoppingLists.forEach { shoppingList ->
             Timber.v(shoppingList.name)
             addShoppingListViewToList(shoppingList)
@@ -38,8 +39,14 @@ class MainActivity : AppCompatActivity() {
         viewmodel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
         viewmodel.loadShoppingLists()
 
+        addShoppingListDialog = AddShoppingListDialog(viewmodel, this)
+
         setupBottomBarAndItsItems()
-        createAddShoppingListDialog()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        hideKeyboard()
     }
 
     override fun onStart() {
@@ -64,12 +71,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun createAddShoppingListDialog() {
-        val view = AddShoppingListView(viewmodel, this)
-
-        addShoppingListDialog = BottomSheetDialog(this)
-        addShoppingListDialog.window?.setLayout(MATCH_PARENT, MATCH_PARENT)
-        addShoppingListDialog.setContentView(view)
+    private fun removeAllItemsFromList() {
+        binding.shoppingListsList.removeAllViews()
     }
 
     private fun addShoppingListViewToList(shoppingList: ShoppingList) {

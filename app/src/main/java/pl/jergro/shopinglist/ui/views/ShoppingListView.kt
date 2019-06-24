@@ -1,4 +1,4 @@
-package pl.jergro.shopinglist.ui
+package pl.jergro.shopinglist.ui.views
 
 import android.content.Context
 import android.view.LayoutInflater
