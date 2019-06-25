@@ -5,15 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ActivityShoppingListBinding
+import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
 class ShoppingListActivity : AppCompatActivity(){
     lateinit var binding: ActivityShoppingListBinding
+    val viewModel = ShoppingListViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val shoppingListName = intent.getStringExtra("shoppingList")
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_shopping_list)
 
-        val shoppingListName = intent.getStringExtra("shoppingList")
+        viewModel.loadShoppingListByName(shoppingListName)
+
         binding.shoppingListNameText.text = shoppingListName
     }
 }
