@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ActivityShoppingListBinding
+import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
 class ShoppingListActivity : AppCompatActivity(){
@@ -20,5 +21,6 @@ class ShoppingListActivity : AppCompatActivity(){
         viewModel.loadShoppingListByName(shoppingListName)
 
         binding.shoppingListNameText.text = shoppingListName
+        binding.bottomBar.outlineProvider = BottomBarOutlineProvider()
     }
 }

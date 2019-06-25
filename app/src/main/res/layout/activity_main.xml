@@ -26,7 +26,7 @@
             android:id="@+id/shoppingListsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toTopOf="@+id/bottomBar"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 

@@ -12,6 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ActivityMainBinding
 import pl.jergro.shopinglist.models.ShoppingList
+import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.ui.adapters.ShoppingListAdapter
 import pl.jergro.shopinglist.ui.dialogs.AddShoppingListDialog
 import pl.jergro.shopinglist.ui.views.ShoppingListView
@@ -67,11 +68,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomBarAndItsItems() {
-        binding.bottomBar.outlineProvider = object : ViewOutlineProvider() {
-            override fun getOutline(view: View, outline: Outline) {
-                outline.setRect(0, (-3).dp(this@MainActivity), view.width, view.height)
-            }
-        }
+        binding.bottomBar.outlineProvider = BottomBarOutlineProvider()
 
         binding.addShoppingListButton.setOnClickListener {
             addShoppingListDialog.show()
