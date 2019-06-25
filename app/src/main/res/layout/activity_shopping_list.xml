@@ -8,12 +8,28 @@
         android:layout_height="match_parent"
         android:background="@color/md_white_1000">
 
+        <ImageView
+            android:id="@+id/backButton"
+            style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:padding="10dp"
+            app:layout_constraintVertical_bias="0.4"
+            android:focusable="true"
+            android:src="@drawable/ic_round_arrow_back_24px"
+            app:layout_constraintBottom_toBottomOf="@+id/shoppingListNameText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/shoppingListNameText" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/shoppingListNameText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:gravity="top"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
@@ -22,7 +38,7 @@
             android:textColor="#000"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/backButton"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Shopping list name" />
 

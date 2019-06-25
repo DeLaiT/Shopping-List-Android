@@ -8,13 +8,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:gravity="center_vertical"
-            android:minHeight="100dp">
-
+            android:layout_height="132dp"
+            android:minHeight="132dp">
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/newShoppingListNameEditText"
+                android:id="@+id/newProductNameEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -23,8 +21,7 @@
                 android:background="@null"
                 android:fontFamily="@font/bold"
                 android:gravity="top"
-                android:hint="Shopping list name"
-                android:imeOptions="actionDone"
+                android:hint="Product name"
                 android:lines="1"
                 android:maxLines="1"
                 android:paddingTop="4dp"
@@ -37,6 +34,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:background="@null"
+                android:fontFamily="@font/regular"
+                android:hint="Price"
+                android:inputType="numberDecimal"
+                android:lines="1"
+                android:maxLines="1"
+                android:paddingTop="2dp"
+                android:paddingBottom="4dp"
+                android:textColor="@color/md_grey_900"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/newProductNameEditText" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/addButton"
@@ -51,7 +68,6 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

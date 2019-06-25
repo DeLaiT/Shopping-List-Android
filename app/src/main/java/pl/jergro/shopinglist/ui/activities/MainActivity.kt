@@ -25,7 +25,7 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewmodel: MainActivityViewModel
-    private lateinit var addShoppingListDialog: AddShoppingListDialog
+    private val addShoppingListDialog: AddShoppingListDialog by lazy { AddShoppingListDialog(viewmodel, this) }
     private val shoppingListAdapter = ShoppingListAdapter(ArrayList())
 
     private val shoppingListsObserver = Observer<ArrayList<ShoppingList>> { shoppingLists ->
@@ -37,8 +37,6 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         viewmodel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
         viewmodel.loadShoppingLists()
-
-        addShoppingListDialog = AddShoppingListDialog(viewmodel, this)
 
         setupShoppingListRecyclerView()
         setupBottomBarAndItsItems()
