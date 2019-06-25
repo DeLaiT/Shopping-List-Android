@@ -1,8 +1,11 @@
 package pl.jergro.shopinglist.ui.views
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import pl.jergro.shopinglist.R
@@ -21,7 +24,7 @@ class ShoppingListView(context: Context) : FrameLayout(context) {
 
     init {
         visibility = INVISIBLE
-
+        layoutParams = ViewGroup.LayoutParams(LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         setBackgroundResource(R.drawable.list_item_background)
 
         post {
@@ -62,5 +65,6 @@ class ShoppingListView(context: Context) : FrameLayout(context) {
         val intent = Intent(context, ShoppingListActivity::class.java)
         intent.putExtra("shoppingList", boundShoppingList.name)
         context.startActivity(intent)
+        (context as Activity).overridePendingTransition(0,0)
     }
 }

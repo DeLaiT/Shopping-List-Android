@@ -7,10 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ActivityMainBinding
 import pl.jergro.shopinglist.models.ShoppingList
+import pl.jergro.shopinglist.ui.adapters.ShoppingListAdapter
 import pl.jergro.shopinglist.ui.dialogs.AddShoppingListDialog
 import pl.jergro.shopinglist.ui.views.ShoppingListView
 import pl.jergro.shopinglist.utils.dp
@@ -23,13 +25,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewmodel: MainActivityViewModel
     private lateinit var addShoppingListDialog: AddShoppingListDialog
+    private val shoppingListAdapter = ShoppingListAdapter(ArrayList())
 
     private val shoppingListsObserver = Observer<ArrayList<ShoppingList>> { shoppingLists ->
-        removeAllItemsFromList()
-
-        shoppingLists.forEach { shoppingList ->
-            addShoppingListViewToList(shoppingList)
-        }
+        shoppingListAdapter.updateData(shoppingLists)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         addShoppingListDialog = AddShoppingListDialog(viewmodel, this)
 
+        setupShoppingListRecyclerView()
         setupBottomBarAndItsItems()
     }
 
@@ -58,6 +58,14 @@ class MainActivity : AppCompatActivity() {
         viewmodel.shoppingListsObservable.removeObserver(shoppingListsObserver)
     }
 
+    private fun setupShoppingListRecyclerView() {
+        binding.shoppingListsRecyclerView.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            adapter = shoppingListAdapter
+        }
+    }
+
     private fun setupBottomBarAndItsItems() {
         binding.bottomBar.outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(view: View, outline: Outline) {
@@ -68,16 +76,5 @@ class MainActivity : AppCompatActivity() {
         binding.addShoppingListButton.setOnClickListener {
             addShoppingListDialog.show()
         }
-    }
-
-    private fun removeAllItemsFromList() {
-        binding.shoppingListsList.removeAllViews()
-    }
-
-    private fun addShoppingListViewToList(shoppingList: ShoppingList) {
-        val shoppingListView = ShoppingListView(this)
-        shoppingListView.bind(shoppingList)
-
-        binding.shoppingListsList.addView(shoppingListView)
     }
 }

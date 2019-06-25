@@ -8,8 +8,8 @@ import pl.jergro.shopinglist.databinding.ActivityShoppingListBinding
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
 class ShoppingListActivity : AppCompatActivity(){
-    lateinit var binding: ActivityShoppingListBinding
-    val viewModel = ShoppingListViewModel()
+    private lateinit var binding: ActivityShoppingListBinding
+    private val viewModel = ShoppingListViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
