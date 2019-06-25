@@ -1,12 +1,14 @@
 package pl.jergro.shopinglist.ui.views
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.databinding.DataBindingUtil
 import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ViewShoppingListBinding
 import pl.jergro.shopinglist.models.ShoppingList
+import pl.jergro.shopinglist.ui.activities.ShoppingListActivity
 import pl.jergro.shopinglist.utils.dp
 
 class ShoppingListView(context: Context) : FrameLayout(context) {
@@ -15,6 +17,7 @@ class ShoppingListView(context: Context) : FrameLayout(context) {
             LayoutInflater.from(context),
             R.layout.view_shopping_list, this, true
         )
+    private lateinit var boundShoppingList: ShoppingList
 
     init {
         visibility = INVISIBLE
@@ -32,6 +35,10 @@ class ShoppingListView(context: Context) : FrameLayout(context) {
 
             visibility = VISIBLE
         }
+
+        setOnClickListener {
+            startShoppingListActivity()
+        }
     }
 
     fun bind(shoppingList: ShoppingList) {
@@ -47,5 +54,13 @@ class ShoppingListView(context: Context) : FrameLayout(context) {
             params.width = (binding.progressBar.width * donePercentage).toInt()
             binding.progressBarIndeterminate.layoutParams = params
         }
+
+        this.boundShoppingList = shoppingList
+    }
+
+    private fun startShoppingListActivity() {
+        val intent = Intent(context, ShoppingListActivity::class.java)
+        intent.putExtra("shoppingList", boundShoppingList.name)
+        context.startActivity(intent)
     }
 }

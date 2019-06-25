@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         removeAllItemsFromList()
 
         shoppingLists.forEach { shoppingList ->
-            Timber.v(shoppingList.name)
             addShoppingListViewToList(shoppingList)
         }
     }
