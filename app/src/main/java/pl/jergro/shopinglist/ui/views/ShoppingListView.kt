@@ -63,7 +63,7 @@ class ShoppingListView(context: Context) : FrameLayout(context) {
 
     private fun startShoppingListActivity() {
         val intent = Intent(context, ShoppingListActivity::class.java)
-        intent.putExtra("shoppingList", boundShoppingList.name)
+        intent.putExtra("selectedShoppingList", boundShoppingList.name)
         context.startActivity(intent)
         (context as Activity).overridePendingTransition(0,0)
     }

@@ -17,7 +17,7 @@ class ShoppingListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val shoppingListName = intent.getStringExtra("shoppingList")
+        val shoppingListName = intent.getStringExtra("selectedShoppingList")
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_shopping_list)
         viewModel = ViewModelProviders.of(this).get(ShoppingListViewModel::class.java)

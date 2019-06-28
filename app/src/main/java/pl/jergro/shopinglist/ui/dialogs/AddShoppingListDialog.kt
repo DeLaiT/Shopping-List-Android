@@ -40,7 +40,6 @@ class AddShoppingListDialog(val viewmodel: MainActivityViewModel, context: Conte
             viewmodel.shoppingListExistsWithName(newShoppingListName) -> Toast.makeText(context, "Shopping list with '$newShoppingListName' name already exists!", Toast.LENGTH_SHORT).show()
             else -> {
                 viewmodel.createShoppingListWithName(newShoppingListName)
-                hideKeyboardFrom(context, binding.newShoppingListNameEditText)
                 dismiss()
             }
         }

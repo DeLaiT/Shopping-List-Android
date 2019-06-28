@@ -3,12 +3,16 @@ package pl.jergro.shopinglist.ui.dialogs
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
 import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.DialogAddProductBinding
+import pl.jergro.shopinglist.models.Product
+import pl.jergro.shopinglist.utils.hideKeyboardFrom
+import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
-class AddProductDialog(val viewModel: ViewModel, context: Context) : BottomSheetDialog(context) {
+class AddProductDialog(val viewModel: ShoppingListViewModel, context: Context) : BottomSheetDialog(context) {
     private lateinit var binding: DialogAddProductBinding
 
     override fun getView(): View {
@@ -19,7 +23,24 @@ class AddProductDialog(val viewModel: ViewModel, context: Context) : BottomSheet
     }
 
     override fun onCreated() {
+        binding.newProductNameEditText.text?.clear()
+        binding.newProductPriceEditText.text?.clear()
 
+        binding.addButton.setOnClickListener {
+            tryToAddProduct()
+        }
     }
 
+    private fun tryToAddProduct() {
+        val productName = binding.newProductNameEditText.text.toString()
+
+        if(productName.isBlank())
+            Toast.makeText(context, "Please enter correct shopping list name", Toast.LENGTH_SHORT).show()
+        else {
+            val product = Product(productName, false ,0.0)
+
+            viewModel.addProductToSelectedShoppingList(product)
+            dismiss()
+        }
+    }
 }
