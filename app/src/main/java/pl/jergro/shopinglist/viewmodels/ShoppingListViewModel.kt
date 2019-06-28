@@ -13,6 +13,9 @@ class ShoppingListViewModel : ViewModel() {
 
     fun loadShoppingListByName(shoppingListName: String) {
         selectedShoppingList = realm.where(ShoppingList::class.java).equalTo("name", shoppingListName).findFirst()!!
+
+        productsObservable.postValue(selectedShoppingList.products)
+
         selectedShoppingList.products.addChangeListener { products ->
             productsObservable.postValue(products)
         }
