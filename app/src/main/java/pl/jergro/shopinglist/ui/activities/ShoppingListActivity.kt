@@ -25,6 +25,7 @@ class ShoppingListActivity : AppCompatActivity() {
         viewModel.loadShoppingListByName(shoppingListName)
 
         binding.shoppingListNameText.text = shoppingListName
+        binding.backButton.setOnClickListener { finish() }
 
         setupBottomBar()
     }
@@ -35,5 +36,10 @@ class ShoppingListActivity : AppCompatActivity() {
         binding.addProductButton.setOnClickListener {
             addProductDialog.show()
         }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(0,0)
     }
 }
