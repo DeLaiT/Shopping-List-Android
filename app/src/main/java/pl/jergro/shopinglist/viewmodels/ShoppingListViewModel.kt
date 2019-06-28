@@ -8,8 +8,8 @@ import pl.jergro.shopinglist.models.ShoppingList
 
 class ShoppingListViewModel : ViewModel() {
     val productsObservable = MutableLiveData<List<Product>>()
-    val realm by lazy { Realm.getDefaultInstance() }
-    lateinit var selectedShoppingList: ShoppingList
+    private val realm by lazy { Realm.getDefaultInstance() }
+    private lateinit var selectedShoppingList: ShoppingList
 
     fun loadShoppingListByName(shoppingListName: String) {
         selectedShoppingList = realm.where(ShoppingList::class.java).equalTo("name", shoppingListName).findFirst()!!
