@@ -28,14 +28,14 @@
             tools:text="Product name" />
 
         <ImageView
-            style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
             android:id="@+id/checkbox"
-            android:clickable="true"
-            android:focusable="true"
+            style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="12dp"
+            android:clickable="true"
+            android:focusable="true"
             android:padding="12dp"
             android:src="@drawable/ic_round_radio_button_unchecked_24px"
             android:tint="@color/md_grey_400"

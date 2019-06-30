@@ -60,7 +60,7 @@ class ProductView(context: Context) : ConstraintLayout(context) {
         binding.productNameText.setTextColor(
             (ContextCompat.getColor(
                 context,
-                if (product.done) R.color.md_grey_400
+                if (product.done) R.color.md_grey_500
                 else R.color.md_grey_900
             ))
         )
