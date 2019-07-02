@@ -30,7 +30,6 @@ class ProductView(context: Context) : ConstraintLayout(context) {
 
                 runOnMainThread {
                     updateViewAccordingToData()
-
                 }
             }
         }
