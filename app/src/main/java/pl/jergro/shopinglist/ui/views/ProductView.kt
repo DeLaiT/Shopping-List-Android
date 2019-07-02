@@ -39,6 +39,7 @@ class ProductView(context: Context) : ConstraintLayout(context) {
         this.product = product
 
         binding.productNameText.text = product.name
+        binding.productPriceText.text = product.price.toString()
 
         updateViewAccordingToData()
     }
@@ -58,6 +59,14 @@ class ProductView(context: Context) : ConstraintLayout(context) {
         )
 
         binding.productNameText.setTextColor(
+            (ContextCompat.getColor(
+                context,
+                if (product.done) R.color.md_grey_500
+                else R.color.md_grey_900
+            ))
+        )
+
+        binding.productPriceText.setTextColor(
             (ContextCompat.getColor(
                 context,
                 if (product.done) R.color.md_grey_500
