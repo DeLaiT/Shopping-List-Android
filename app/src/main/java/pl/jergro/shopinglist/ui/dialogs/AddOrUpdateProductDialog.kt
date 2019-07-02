@@ -14,7 +14,7 @@ import java.util.*
 class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, context: Context) :
     BottomSheetDialog(context) {
     private lateinit var binding: DialogAddProductBinding
-    private var prod: Product? = null
+    private var editedProduct: Product? = null
 
     override fun getView(): View {
         val layoutInflater = LayoutInflater.from(context)
@@ -24,9 +24,9 @@ class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, con
     }
 
     override fun onCreated() {
-        if (prod != null) {
-            binding.newProductNameEditText.setText(prod?.name)
-            binding.newProductPriceEditText.setText(prod?.price.toString())
+        if (editedProduct != null) {
+            binding.newProductNameEditText.setText(editedProduct?.name)
+            binding.newProductPriceEditText.setText(editedProduct?.price.toString())
         } else {
             binding.newProductNameEditText.text?.clear()
             binding.newProductPriceEditText.text?.clear()
@@ -48,8 +48,8 @@ class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, con
         if (productName.isBlank())
             Toast.makeText(context, "Please enter correct shopping list name", Toast.LENGTH_SHORT).show()
         else {
-            if (prod != null) {
-                val product = Product(prod?.id!!, productName, false, productPrice.toDouble())
+            if (editedProduct != null) {
+                val product = Product(editedProduct?.id!!, productName, false, productPrice.toDouble())
                 viewModel.updateProduct(product)
             } else {
                 val product = Product(UUID.randomUUID().toString(), productName, false, productPrice.toDouble())
@@ -61,6 +61,6 @@ class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, con
     }
 
     fun setProduct(product: Product) {
-        this.prod = product
+        this.editedProduct = product
     }
 }
