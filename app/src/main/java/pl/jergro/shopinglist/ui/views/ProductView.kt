@@ -3,6 +3,7 @@ package pl.jergro.shopinglist.ui.views
 import android.content.Context
 import android.content.res.ColorStateList
 import android.view.LayoutInflater
+import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -73,5 +74,11 @@ class ProductView(context: Context) : ConstraintLayout(context) {
                 else R.color.md_grey_900
             ))
         )
+
+        if (product.price != 0.0) {
+            binding.productPriceText.visibility = View.VISIBLE
+        } else {
+            binding.productPriceText.visibility = View.GONE
+        }
     }
 }
