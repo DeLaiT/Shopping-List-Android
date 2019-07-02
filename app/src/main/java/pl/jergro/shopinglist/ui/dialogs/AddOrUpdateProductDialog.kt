@@ -11,7 +11,8 @@ import pl.jergro.shopinglist.models.Product
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 import java.util.*
 
-class AddProductDialog(private val viewModel: ShoppingListViewModel, context: Context) : BottomSheetDialog(context) {
+class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, context: Context) :
+    BottomSheetDialog(context) {
     private lateinit var binding: DialogAddProductBinding
     private var prod: Product? = null
 
@@ -32,13 +33,17 @@ class AddProductDialog(private val viewModel: ShoppingListViewModel, context: Co
         }
 
         binding.addButton.setOnClickListener {
-            tryToAddProduct()
+            tryToAddOrUpdateProduct()
         }
     }
 
-    private fun tryToAddProduct() {
+    private fun tryToAddOrUpdateProduct() {
         val productName = binding.newProductNameEditText.text.toString()
-        val productPrice = binding.newProductPriceEditText.text.toString()
+        val productPrice = if (binding.newProductPriceEditText.text.isNullOrBlank()) {
+            "0.0"
+        } else {
+            binding.newProductPriceEditText.text.toString()
+        }
 
         if (productName.isBlank())
             Toast.makeText(context, "Please enter correct shopping list name", Toast.LENGTH_SHORT).show()
@@ -55,7 +60,7 @@ class AddProductDialog(private val viewModel: ShoppingListViewModel, context: Co
         }
     }
 
-    fun product(product: Product) {
+    fun setProduct(product: Product) {
         this.prod = product
     }
 }
