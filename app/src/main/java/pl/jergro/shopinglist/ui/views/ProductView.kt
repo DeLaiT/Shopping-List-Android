@@ -67,14 +67,6 @@ class ProductView(context: Context) : ConstraintLayout(context) {
             ))
         )
 
-        binding.productPriceText.setTextColor(
-            (ContextCompat.getColor(
-                context,
-                if (product.done) R.color.md_grey_500
-                else R.color.md_grey_900
-            ))
-        )
-
         if (product.price != 0.0) {
             binding.productPriceText.visibility = View.VISIBLE
         } else {
