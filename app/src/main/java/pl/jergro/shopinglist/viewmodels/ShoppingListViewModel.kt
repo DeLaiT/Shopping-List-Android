@@ -26,4 +26,11 @@ class ShoppingListViewModel : ViewModel() {
             selectedShoppingList.products.add(product)
         }
     }
+
+    fun updateProduct(product: Product) {
+        realm.beginTransaction()
+        realm.insertOrUpdate(product)
+        realm.commitTransaction()
+    }
+
 }
