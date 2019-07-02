@@ -11,7 +11,7 @@ import pl.jergro.shopinglist.databinding.ActivityShoppingListBinding
 import pl.jergro.shopinglist.models.Product
 import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.ui.adapters.ProductsListAdapter
-import pl.jergro.shopinglist.ui.dialogs.AddProductDialog
+import pl.jergro.shopinglist.ui.dialogs.AddOrUpdateProductDialog
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
 class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
@@ -21,7 +21,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
     private val viewModel by lazy {
         ViewModelProviders.of(this).get(ShoppingListViewModel::class.java)
     }
-    private val addProductDialog by lazy { AddProductDialog(viewModel, this) }
+    private val addProductDialog by lazy { AddOrUpdateProductDialog(viewModel, this) }
 
     private val productsObserver = Observer { products: List<Product> ->
         productsListAdapter.updateData(products)
@@ -55,7 +55,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
     private fun setupBottomBar() {
         binding.bottomBar.outlineProvider = BottomBarOutlineProvider()
 
-        binding.addProductButton.setOnClickListener { AddProductDialog(viewModel, this).show() }
+        binding.addProductButton.setOnClickListener { AddOrUpdateProductDialog(viewModel, this).show() }
     }
 
     private fun setupRecyclerView() {
@@ -68,7 +68,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
     }
 
     override fun onProductItemClicked(product: Product) {
-        addProductDialog.product(product)
+        addProductDialog.setProduct(product)
         addProductDialog.show()
     }
 
