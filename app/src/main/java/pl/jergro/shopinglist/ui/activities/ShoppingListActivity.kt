@@ -14,10 +14,13 @@ import pl.jergro.shopinglist.ui.adapters.ProductsListAdapter
 import pl.jergro.shopinglist.ui.dialogs.AddProductDialog
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
-class ShoppingListActivity : AppCompatActivity() {
+class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
     private lateinit var binding: ActivityShoppingListBinding
-    private lateinit var viewModel: ShoppingListViewModel
     private lateinit var productsListAdapter: ProductsListAdapter
+
+    private val viewModel by lazy {
+        ViewModelProviders.of(this).get(ShoppingListViewModel::class.java)
+    }
     private val addProductDialog by lazy { AddProductDialog(viewModel, this) }
 
     private val productsObserver = Observer { products: List<Product> ->
@@ -29,7 +32,6 @@ class ShoppingListActivity : AppCompatActivity() {
         val shoppingListName = intent.getStringExtra("selectedShoppingList")
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_shopping_list)
-        viewModel = ViewModelProviders.of(this).get(ShoppingListViewModel::class.java)
 
         viewModel.loadShoppingListByName(shoppingListName)
 
@@ -53,18 +55,21 @@ class ShoppingListActivity : AppCompatActivity() {
     private fun setupBottomBar() {
         binding.bottomBar.outlineProvider = BottomBarOutlineProvider()
 
-        binding.addProductButton.setOnClickListener {
-            addProductDialog.show()
-        }
+        binding.addProductButton.setOnClickListener { AddProductDialog(viewModel, this).show() }
     }
 
     private fun setupRecyclerView() {
-        productsListAdapter = ProductsListAdapter(emptyList())
+        productsListAdapter = ProductsListAdapter(emptyList(), this)
 
         binding.productsRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@ShoppingListActivity)
             adapter = productsListAdapter
         }
+    }
+
+    override fun onProductItemClicked(product: Product) {
+        addProductDialog.product(product)
+        addProductDialog.show()
     }
 
     override fun finish() {
