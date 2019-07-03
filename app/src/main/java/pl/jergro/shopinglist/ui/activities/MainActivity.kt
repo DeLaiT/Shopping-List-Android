@@ -1,5 +1,6 @@
 package pl.jergro.shopinglist.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -12,15 +13,24 @@ import pl.jergro.shopinglist.models.ShoppingList
 import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.ui.adapters.ShoppingListAdapter
 import pl.jergro.shopinglist.ui.dialogs.AddShoppingListDialog
+import pl.jergro.shopinglist.ui.dialogs.OptionsShoppingDialog
 import pl.jergro.shopinglist.utils.hideKeyboard
 import pl.jergro.shopinglist.viewmodels.MainActivityViewModel
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewmodel: MainActivityViewModel
-    private val addShoppingListDialog: AddShoppingListDialog by lazy { AddShoppingListDialog(viewmodel, this) }
-    private val shoppingListAdapter = ShoppingListAdapter(ArrayList())
+    private val shoppingListAdapter = ShoppingListAdapter(ArrayList(), this)
+
+    private val viewModel by lazy {
+        ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
+    }
+    private val addShoppingListDialog by lazy {
+        AddShoppingListDialog(viewModel, this)
+    }
+    private val shoppingOptionsDialog by lazy {
+        OptionsShoppingDialog(viewModel, this, this)
+    }
 
     private val shoppingListsObserver = Observer<ArrayList<ShoppingList>> { shoppingLists ->
         shoppingListAdapter.updateData(shoppingLists)
@@ -29,8 +39,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewmodel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
-        viewmodel.loadShoppingLists()
+        viewModel.loadShoppingLists()
 
         setupShoppingListRecyclerView()
         setupBottomBarAndItsItems()
@@ -43,12 +52,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        viewmodel.shoppingListsObservable.observe(this, shoppingListsObserver)
+        viewModel.shoppingListsObservable.observe(this, shoppingListsObserver)
     }
 
     override fun onPause() {
         super.onPause()
-        viewmodel.shoppingListsObservable.removeObserver(shoppingListsObserver)
+        viewModel.shoppingListsObservable.removeObserver(shoppingListsObserver)
     }
 
     private fun setupShoppingListRecyclerView() {
@@ -66,4 +75,16 @@ class MainActivity : AppCompatActivity() {
             addShoppingListDialog.show()
         }
     }
+
+    override fun onMenuClicked() {
+        shoppingOptionsDialog.show()
+    }
+
+    override fun onItemClicked(shoppingList: ShoppingList) {
+        val intent = Intent(this, ShoppingListActivity::class.java)
+        intent.putExtra("selectedShoppingList", shoppingList.name)
+        startActivity(intent)
+        overridePendingTransition(0, 0)
+    }
+
 }

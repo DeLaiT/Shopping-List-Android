@@ -1,16 +1,28 @@
 package pl.jergro.shopinglist.viewmodels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.realm.Realm
 import io.realm.RealmList
+import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.models.ShoppingList
+import pl.jergro.shopinglist.models.ShoppingOptions
 import timber.log.Timber
 
 class MainActivityViewModel : ViewModel() {
     val shoppingListsObservable = MutableLiveData<ArrayList<ShoppingList>>()
     private val realm = Realm.getDefaultInstance()
+    private val _shopOptions = MutableLiveData<List<ShoppingOptions>>()
 
+    fun shoppingOptions() {
+        val shop = listOf(
+            ShoppingOptions(R.drawable.ic_share, "Share", R.color.md_grey_900),
+            ShoppingOptions(R.drawable.ic_restore, "Reset Products", R.color.md_yellow_A700),
+            ShoppingOptions(R.drawable.ic_round_delete_forever_24px, "Delete forever", R.color.md_red_900)
+        )
+        _shopOptions.postValue(shop)
+    }
 
     fun shoppingListExistsWithName(name: String): Boolean {
         val foundShoppingList = realm.where(ShoppingList::class.java).equalTo("name", name).findFirst()
@@ -43,4 +55,8 @@ class MainActivityViewModel : ViewModel() {
 
         shoppingListsObservable.postValue(shoppingLists)
     }
+
+
+    val shopOptions: LiveData<List<ShoppingOptions>>
+        get() = _shopOptions
 }

@@ -5,12 +5,17 @@ import androidx.recyclerview.widget.RecyclerView
 import pl.jergro.shopinglist.models.ShoppingList
 import pl.jergro.shopinglist.ui.views.ShoppingListView
 
-class ShoppingListAdapter(var data: ArrayList<ShoppingList>) : RecyclerView.Adapter<ShoppingListAdapter.ViewHolder>() {
-    class ViewHolder(val shoppingListView: ShoppingListView) : RecyclerView.ViewHolder(shoppingListView)
+class ShoppingListAdapter(var data: ArrayList<ShoppingList>, private val listener: Listener) :
+    RecyclerView.Adapter<ShoppingListAdapter.ViewHolder>() {
+    class ViewHolder(val shoppingListView: ShoppingListView) : RecyclerView.ViewHolder(shoppingListView.binding.root)
+
+    interface Listener {
+        fun onItemClicked(shoppingList: ShoppingList)
+        fun onMenuClicked()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val context = parent.context
-        return ViewHolder(ShoppingListView(context))
+        return ViewHolder(ShoppingListView(parent, this))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -22,5 +27,13 @@ class ShoppingListAdapter(var data: ArrayList<ShoppingList>) : RecyclerView.Adap
     fun updateData(newData: ArrayList<ShoppingList>) {
         data = newData
         notifyDataSetChanged()
+    }
+
+    fun onShopItemClicked(shoppingList: ShoppingList) {
+        listener.onItemClicked(shoppingList)
+    }
+
+    fun onClickOpenMenu() {
+        listener.onMenuClicked()
     }
 }
