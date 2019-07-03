@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="pl.jergro.shopinglist.ui.binding_adp.BindingsAdp" />
+
+        <variable
+            name="opt"
+            type="pl.jergro.shopinglist.models.ShoppingOptions" />
+
+        <variable
+            name="adp"
+            type="pl.jergro.shopinglist.ui.adapters.ShoppingOptionsAdapter" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> adp.onOptionClicked(opt)}"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@null"
+            app:color="@{opt.color}"
+            app:icon="@{opt.icon}"
+            tools:src="@drawable/ic_round_delete_forever_24px"
+            tools:tint="@color/md_red_A700" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@{opt.title}"
+            android:textSize="16sp"
+            app:texto="@{opt.color}"
+            tools:text="Delete Forever"
+            tools:textColor="@color/md_red_A700" />
+
+    </LinearLayout>
+</layout>
