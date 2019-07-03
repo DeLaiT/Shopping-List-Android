@@ -8,7 +8,7 @@
         <import type="android.view.View" />
 
         <variable
-            name="prod"
+            name="product"
             type="pl.jergro.shopinglist.models.Product" />
 
         <variable
@@ -20,7 +20,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> adp.onProdClicked(prod)}"
+        android:onClick="@{() -> adp.onProductClicked(product)}"
         tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -32,8 +32,8 @@
             android:fontFamily="@font/bold"
             android:maxLines="1"
             android:padding="12dp"
-            android:text="@{prod.name}"
-            android:textColor="@{prod.done ? @color/md_grey_500 : @color/md_grey_900}"
+            android:text="@{product.name}"
+            android:textColor="@{product.done ? @color/md_grey_500 : @color/md_grey_900}"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/productPriceText"
             app:layout_constraintEnd_toStartOf="@+id/checkbox"
@@ -54,10 +54,10 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:padding="12dp"
-            android:text="@{String.valueOf(prod.price)}"
+            android:text="@{String.valueOf(product.price)}"
             android:textColor="@color/md_grey_500"
             android:textSize="14sp"
-            android:visibility="@{prod.price > 0.0 ? View.VISIBLE : View.GONE}"
+            android:visibility="@{product.price > 0.0 ? View.VISIBLE : View.GONE}"
             app:drawableStartCompat="@drawable/ic_round_monetization_on_24px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/productNameText"
@@ -78,10 +78,10 @@
             android:clickable="true"
             android:contentDescription="@null"
             android:focusable="true"
-            android:onClick="@{() -> adp.onProdChecked(prod)}"
+            android:onClick="@{() -> adp.onProductChecked(product)}"
             android:padding="12dp"
-            android:src="@{prod.done ? @drawable/ic_round_check_circle_outline_24px : @drawable/ic_round_radio_button_unchecked_24px}"
-            android:tint="@{prod.done ? @color/md_blue_A400 : @color/md_grey_400}"
+            android:src="@{product.done ? @drawable/ic_round_check_circle_outline_24px : @drawable/ic_round_radio_button_unchecked_24px}"
+            android:tint="@{product.done ? @color/md_blue_A400 : @color/md_grey_400}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

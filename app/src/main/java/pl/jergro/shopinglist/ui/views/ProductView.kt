@@ -11,7 +11,7 @@ class ProductView(parent: ViewGroup, private val productsListAdapter: ProductsLi
     val binding = ViewProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
     fun bind(product: Product) {
-        binding.prod = product
+        binding.product = product
         binding.adp = productsListAdapter
     }
 
