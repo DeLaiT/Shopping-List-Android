@@ -29,12 +29,11 @@ class ProductsListAdapter(var data: List<Product>, private val listener: Listene
         notifyDataSetChanged()
     }
 
-    fun onProdChecked(product: Product) {
+    fun onProductChecked(product: Product) {
         listener.onProductChecked(product)
     }
 
-    fun onProdClicked(product: Product) {
+    fun onProductClicked(product: Product) {
         listener.onProductItemClicked(product)
     }
-
 }
