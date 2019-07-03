@@ -3,26 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="prod"
+            type="pl.jergro.shopinglist.models.Product" />
+
+        <variable
+            name="adp"
+            type="pl.jergro.shopinglist.ui.adapters.ProductsListAdapter" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{() -> adp.onProdClicked(prod)}"
         tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/productNameText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:fontFamily="@font/bold"
-            android:lines="1"
             android:maxLines="1"
-            android:paddingBottom="16dp"
-            android:singleLine="true"
-            android:textColor="@color/md_grey_900"
+            android:padding="10dp"
+            android:text="@{prod.name}"
             android:textSize="16sp"
+            android:textColor="@{prod.done ? @color/md_grey_500 : @color/md_grey_900}"
+            app:layout_constraintBottom_toTopOf="@+id/productPriceText"
             app:layout_constraintEnd_toStartOf="@+id/checkbox"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Product name" />
@@ -31,20 +47,22 @@
             android:id="@+id/productPriceText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
             android:drawablePadding="6dp"
             android:drawableTint="@color/md_grey_500"
             android:ellipsize="end"
+            android:gravity="center_vertical"
             android:fontFamily="@font/bold"
-            android:lines="1"
+            android:padding="10dp"
             android:maxLines="1"
-            android:paddingBottom="16dp"
-            android:singleLine="true"
+            android:text="@{String.valueOf(prod.price)}"
             android:textColor="@color/md_grey_500"
             android:textSize="14sp"
+            android:visibility="@{prod.price > 0.0 ? View.VISIBLE : View.GONE}"
             app:drawableStartCompat="@drawable/ic_round_monetization_on_24px"
-            android:gravity="center_vertical"
-            app:layout_constraintEnd_toStartOf="@+id/checkbox"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/productNameText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/productNameText"
             tools:text="0.00" />
@@ -52,25 +70,24 @@
         <ImageView
             android:id="@+id/checkbox"
             style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="4dp"
+            android:layout_width="70dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:clickable="true"
             android:focusable="true"
             android:padding="12dp"
-            android:src="@drawable/ic_round_radio_button_unchecked_24px"
-            android:tint="@color/md_grey_400"
+            android:contentDescription="@null"
+            android:onClick="@{() -> adp.onProdChecked(prod)}"
+            android:src="@{prod.done ? @drawable/ic_round_check_circle_outline_24px : @drawable/ic_round_radio_button_unchecked_24px}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:tint="@{prod.done ? @color/md_blue_A400 : @color/md_grey_400}"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/productNameText"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/md_grey_300"
-            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
