@@ -64,7 +64,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
 
         binding.productsRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@ShoppingListActivity)
-            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             adapter = productsListAdapter
         }
     }
