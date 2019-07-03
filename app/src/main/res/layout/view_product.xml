@@ -33,7 +33,7 @@
             android:maxLines="1"
             android:padding="12dp"
             android:text="@{product.name}"
-            android:textColor="@{product.done ? @color/md_grey_500 : @color/md_grey_900}"
+            android:textColor="@{product.done ? @color/md_grey_400 : @color/md_grey_900}"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/productPriceText"
             app:layout_constraintEnd_toStartOf="@+id/checkbox"
@@ -42,29 +42,38 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Product name" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_round_monetization_on_24px"
+            android:tint="@{product.done ? @color/md_grey_400 : @color/md_grey_500}"
+            android:visibility="@{product.price > 0.0 ? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/productPriceText" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/productPriceText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:drawablePadding="6dp"
-            android:drawableTint="@color/md_grey_500"
             android:ellipsize="end"
             android:fontFamily="@font/bold"
             android:gravity="center_vertical"
             android:maxLines="1"
-            android:paddingStart="12dp"
+            android:paddingStart="4dp"
             android:paddingTop="4dp"
             android:paddingEnd="12dp"
             android:paddingBottom="12dp"
             android:text="@{String.valueOf(product.price)}"
-            android:textColor="@color/md_grey_500"
+            android:textColor="@{product.done ? @color/md_grey_400 : @color/md_grey_500}"
             android:textSize="14sp"
             android:visibility="@{product.price > 0.0 ? View.VISIBLE : View.GONE}"
-            app:drawableStartCompat="@drawable/ic_round_monetization_on_24px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/productNameText"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/productNameText"
             tools:text="0.00"
             tools:visibility="visible" />
@@ -87,7 +96,9 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/productNameText"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlSymmetry" />
+            tools:ignore="RtlSymmetry"
+            tools:src="@drawable/ic_round_check_circle_outline_24px"
+            tools:tint="@color/md_blue_A400" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
