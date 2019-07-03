@@ -24,7 +24,9 @@ class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, con
     }
 
     override fun onCreated() {
-        if (editedProduct != null) {
+        binding.isEditing = editedProduct != null
+
+        if (binding.isEditing) {
             binding.newProductNameEditText.setText(editedProduct?.name)
             binding.newProductPriceEditText.setText(editedProduct?.price.toString())
         } else {
