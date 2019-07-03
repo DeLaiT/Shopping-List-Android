@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ActivityShoppingListBinding
@@ -63,6 +64,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
 
         binding.productsRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@ShoppingListActivity)
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
             adapter = productsListAdapter
         }
     }
@@ -70,6 +72,10 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
     override fun onProductItemClicked(product: Product) {
         addProductDialog.setProduct(product)
         addProductDialog.show()
+    }
+
+    override fun onProductChecked(product: Product) {
+        viewModel.updateProdStatus(product)
     }
 
     override fun finish() {

@@ -33,4 +33,8 @@ class ShoppingListViewModel : ViewModel() {
         realm.commitTransaction()
     }
 
+    fun updateProdStatus(product: Product) {
+        realm.executeTransaction { product.done = !product.done }
+    }
+
 }
