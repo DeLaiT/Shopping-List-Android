@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import pl.jergro.shopinglist.databinding.DialogShoppingOptionsBinding
+import pl.jergro.shopinglist.models.ShoppingList
 import pl.jergro.shopinglist.models.ShoppingOptions
 import pl.jergro.shopinglist.ui.adapters.ShoppingOptionsAdapter
 import pl.jergro.shopinglist.viewmodels.MainActivityViewModel
@@ -19,6 +20,7 @@ class OptionsShoppingDialog(
 ) : BottomSheetDialog(context), ShoppingOptionsAdapter.Listener {
 
     private val shopAdp = ShoppingOptionsAdapter(ArrayList(), this)
+    private lateinit var _shoppingList: ShoppingList
 
     private val binding =
         DialogShoppingOptionsBinding.inflate(LayoutInflater.from(context), null, false)
@@ -39,9 +41,20 @@ class OptionsShoppingDialog(
         viewModel.shopOptions.observe(lifecycleOwner, Observer {
             shopAdp.uptData(it)
         })
+        viewModel.shoppingListSel.observe(lifecycleOwner, Observer {
+            _shoppingList = it
+            binding.shop = it
+        })
     }
 
     override fun onOptionItemClicked(shoppingOptions: ShoppingOptions) {
-
+        when (shoppingOptions.id) {
+            0 -> _shoppingList.let { viewModel.shareShoppingList(it) }
+            1 -> _shoppingList.let { viewModel.resetShoppingList(it) }
+            2 -> _shoppingList.let {
+                viewModel.deleteShoppingList(it)
+                dismiss()
+            }
+        }
     }
 }

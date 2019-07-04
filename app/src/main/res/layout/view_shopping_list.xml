@@ -76,7 +76,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@null"
-                android:onClick="@{() -> adp.onClickOpenMenu()}"
+                android:onClick="@{() -> adp.onClickOpenMenu(shop)}"
                 android:padding="8dp"
                 android:src="@drawable/ic_round_more_vert_24px"
                 android:tint="@color/md_grey_600"
