@@ -11,7 +11,7 @@ class ShoppingListAdapter(var data: ArrayList<ShoppingList>, private val listene
 
     interface Listener {
         fun onItemClicked(shoppingList: ShoppingList)
-        fun onMenuClicked()
+        fun onMenuClicked(shoppingList: ShoppingList)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,7 +33,7 @@ class ShoppingListAdapter(var data: ArrayList<ShoppingList>, private val listene
         listener.onItemClicked(shoppingList)
     }
 
-    fun onClickOpenMenu() {
-        listener.onMenuClicked()
+    fun onClickOpenMenu(shoppingList: ShoppingList) {
+        listener.onMenuClicked(shoppingList)
     }
 }

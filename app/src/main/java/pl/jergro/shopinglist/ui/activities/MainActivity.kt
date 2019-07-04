@@ -32,10 +32,6 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
         OptionsShoppingDialog(viewModel, this, this)
     }
 
-    private val shoppingListsObserver = Observer<ArrayList<ShoppingList>> { shoppingLists ->
-        shoppingListAdapter.updateData(shoppingLists)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -43,21 +39,19 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
 
         setupShoppingListRecyclerView()
         setupBottomBarAndItsItems()
+
+        observers()
+    }
+
+    private fun observers() {
+        viewModel.shoppingListsObservable.observe(this, Observer {
+            shoppingListAdapter.updateData(it)
+        })
     }
 
     override fun onResume() {
         super.onResume()
         hideKeyboard()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        viewModel.shoppingListsObservable.observe(this, shoppingListsObserver)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        viewModel.shoppingListsObservable.removeObserver(shoppingListsObserver)
     }
 
     private fun setupShoppingListRecyclerView() {
@@ -76,7 +70,8 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
         }
     }
 
-    override fun onMenuClicked() {
+    override fun onMenuClicked(shoppingList: ShoppingList) {
+        viewModel.shoppingListSelected.postValue(shoppingList)
         shoppingOptionsDialog.show()
     }
 
