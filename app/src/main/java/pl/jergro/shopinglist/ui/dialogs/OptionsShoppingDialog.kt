@@ -53,8 +53,7 @@ class OptionsShoppingDialog(
 
     override fun onOptionItemClicked(shoppingOptions: ShoppingOptions) {
         when (shoppingOptions.id) {
-//            0 -> _shoppingList.let { viewModel.shareShoppingList(it) }
-            0 -> Toast.makeText(context, "not implemented", Toast.LENGTH_SHORT).show()
+            0 -> _shoppingList.let { viewModel.shareShoppingList(it) }
             1 -> _shoppingList.let { viewModel.resetShoppingList(it) }
             2 -> _shoppingList.let { viewModel.deleteShoppingList(it) }
         }
