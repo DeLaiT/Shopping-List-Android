@@ -13,6 +13,7 @@ class ProductView(parent: ViewGroup, private val productsListAdapter: ProductsLi
     fun bind(product: Product) {
         binding.product = product
         binding.adp = productsListAdapter
+        binding.executePendingBindings()
     }
 
 }
