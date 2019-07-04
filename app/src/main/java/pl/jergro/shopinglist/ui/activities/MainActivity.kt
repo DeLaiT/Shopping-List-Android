@@ -35,9 +35,7 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewModel.loadShoppingLists()
 
-        setupShoppingListRecyclerView()
         setupBottomBarAndItsItems()
 
         observers()
@@ -52,6 +50,9 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
     override fun onResume() {
         super.onResume()
         hideKeyboard()
+        viewModel.loadShoppingLists()
+        setupShoppingListRecyclerView()
+
     }
 
     private fun setupShoppingListRecyclerView() {
