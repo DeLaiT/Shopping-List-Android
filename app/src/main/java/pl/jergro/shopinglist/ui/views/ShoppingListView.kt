@@ -24,11 +24,7 @@ class ShoppingListView(parent: ViewGroup, private val shoppingListAdapter: Shopp
 
         binding.itemsDoneText.text = "$productsDone / $productsCount - ${(donePercentage * 100).toInt()}%"
 
-        /*post {
-            val params = binding.progressBarIndeterminate.layoutParams as LayoutParams
-            params.width = (binding.progressBar.width * donePercentage).toInt()
-            binding.progressBarIndeterminate.layoutParams = params
-        }*/
+        binding.progressBar.progress = (donePercentage * 100).toInt()
 
     }
 }
