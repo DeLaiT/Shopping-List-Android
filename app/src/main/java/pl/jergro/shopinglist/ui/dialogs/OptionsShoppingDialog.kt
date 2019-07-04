@@ -3,6 +3,7 @@ package pl.jergro.shopinglist.ui.dialogs
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -45,16 +46,18 @@ class OptionsShoppingDialog(
             _shoppingList = it
             binding.shop = it
         })
+        viewModel.msgFeedback.observe(lifecycleOwner, Observer {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+        })
     }
 
     override fun onOptionItemClicked(shoppingOptions: ShoppingOptions) {
         when (shoppingOptions.id) {
             0 -> _shoppingList.let { viewModel.shareShoppingList(it) }
             1 -> _shoppingList.let { viewModel.resetShoppingList(it) }
-            2 -> _shoppingList.let {
-                viewModel.deleteShoppingList(it)
-                dismiss()
-            }
+            2 -> _shoppingList.let { viewModel.deleteShoppingList(it) }
         }
+        dismiss()
     }
+
 }
