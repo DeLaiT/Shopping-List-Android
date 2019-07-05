@@ -4,14 +4,20 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import pl.jergro.shopinglist.databinding.ViewShoppingListBinding
 import pl.jergro.shopinglist.models.ShoppingList
-import pl.jergro.shopinglist.ui.adapters.ShoppingListAdapter
+import pl.jergro.shopinglist.ui.adapters.handlers.ShoppingListHandler
 
-class ShoppingListView(parent: ViewGroup, private val shoppingListAdapter: ShoppingListAdapter) {
+class ShoppingListView(parent: ViewGroup, private val listener: Listener) : ShoppingListHandler.HandlerListener {
+
+    interface Listener {
+        fun onShopItemClicked(shoppingList: ShoppingList)
+        fun onClickOpenMenu(shoppingList: ShoppingList)
+    }
+
     val binding = ViewShoppingListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
     fun bind(shoppingList: ShoppingList) {
-        binding.shop = shoppingList
-        binding.adp = shoppingListAdapter
+        binding.shoppingList = shoppingList
+        binding.shopListHandler = ShoppingListHandler(this)
         binding.executePendingBindings()
 
         val productsDone = shoppingList.products.count { it.done }
@@ -26,5 +32,13 @@ class ShoppingListView(parent: ViewGroup, private val shoppingListAdapter: Shopp
 
         binding.progressBar.progress = (donePercentage * 100).toInt()
 
+    }
+
+    override fun onShopItemClicked(shoppingList: ShoppingList) {
+        listener.onShopItemClicked(shoppingList)
+    }
+
+    override fun onClickOpenMenu(shoppingList: ShoppingList) {
+        listener.onClickOpenMenu(shoppingList)
     }
 }

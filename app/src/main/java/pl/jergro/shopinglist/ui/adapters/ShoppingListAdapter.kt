@@ -6,11 +6,11 @@ import pl.jergro.shopinglist.models.ShoppingList
 import pl.jergro.shopinglist.ui.views.ShoppingListView
 
 class ShoppingListAdapter(var data: ArrayList<ShoppingList>, private val listener: Listener) :
-    RecyclerView.Adapter<ShoppingListAdapter.ViewHolder>() {
+    RecyclerView.Adapter<ShoppingListAdapter.ViewHolder>(), ShoppingListView.Listener {
     class ViewHolder(val shoppingListView: ShoppingListView) : RecyclerView.ViewHolder(shoppingListView.binding.root)
 
     interface Listener {
-        fun onItemClicked(shoppingList: ShoppingList)
+        fun startSelectedShoppingList(shoppingList: ShoppingList)
         fun onMenuClicked(shoppingList: ShoppingList)
     }
 
@@ -29,11 +29,11 @@ class ShoppingListAdapter(var data: ArrayList<ShoppingList>, private val listene
         notifyDataSetChanged()
     }
 
-    fun onShopItemClicked(shoppingList: ShoppingList) {
-        listener.onItemClicked(shoppingList)
+    override fun onShopItemClicked(shoppingList: ShoppingList) {
+        listener.startSelectedShoppingList(shoppingList)
     }
 
-    fun onClickOpenMenu(shoppingList: ShoppingList) {
+    override fun onClickOpenMenu(shoppingList: ShoppingList) {
         listener.onMenuClicked(shoppingList)
     }
 }

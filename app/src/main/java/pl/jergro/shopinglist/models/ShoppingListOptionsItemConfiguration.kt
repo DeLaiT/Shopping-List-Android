@@ -1,6 +1,6 @@
 package pl.jergro.shopinglist.models
 
-data class ShoppingOptions(
+data class ShoppingListOptionsItemConfiguration(
     val id: Int,
     val icon: Int,
     val title: String,

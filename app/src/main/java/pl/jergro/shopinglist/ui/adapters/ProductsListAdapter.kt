@@ -6,7 +6,7 @@ import pl.jergro.shopinglist.models.Product
 import pl.jergro.shopinglist.ui.views.ProductView
 
 class ProductsListAdapter(var data: List<Product>, private val listener: Listener) :
-    RecyclerView.Adapter<ProductsListAdapter.ViewHolder>() {
+    RecyclerView.Adapter<ProductsListAdapter.ViewHolder>(), ProductView.Listener {
     class ViewHolder(val shoppingListView: ProductView) : RecyclerView.ViewHolder(shoppingListView.binding.root)
 
     interface Listener {
@@ -29,11 +29,11 @@ class ProductsListAdapter(var data: List<Product>, private val listener: Listene
         notifyDataSetChanged()
     }
 
-    fun onProductChecked(product: Product) {
+    override fun onProductChecked(product: Product) {
         listener.onProductChecked(product)
     }
 
-    fun onProductClicked(product: Product) {
+    override fun onProductClicked(product: Product) {
         listener.onProductItemClicked(product)
     }
 }

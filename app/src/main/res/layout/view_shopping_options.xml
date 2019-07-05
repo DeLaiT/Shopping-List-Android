@@ -5,22 +5,24 @@
 
     <data>
 
-        <import type="pl.jergro.shopinglist.ui.binding_adp.BindingsAdp" />
+        <import type="android.view.View" />
+
+        <import type="pl.jergro.shopinglist.ui.binding_adp.Binding_adaptersKt" />
 
         <variable
-            name="opt"
-            type="pl.jergro.shopinglist.models.ShoppingOptions" />
+            name="shopListOptItemConfig"
+            type="pl.jergro.shopinglist.models.ShoppingListOptionsItemConfiguration" />
 
         <variable
-            name="adp"
-            type="pl.jergro.shopinglist.ui.adapters.ShoppingOptionsAdapter" />
+            name="shopOptListHandler"
+            type="pl.jergro.shopinglist.ui.adapters.handlers.ShoppingOptionListHandler" />
 
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> adp.onOptionClicked(opt)}"
+        android:onClick="@{() -> shopOptListHandler.onOptionClicked(shopListOptItemConfig)}"
         android:orientation="horizontal"
         android:weightSum="3">
 
@@ -31,8 +33,9 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="@null"
-            app:color="@{opt.color}"
-            app:icon="@{opt.icon}"
+            android:visibility="@{shopListOptItemConfig.id == 0 ? View.GONE : View.VISIBLE}"
+            app:imageColorRes="@{shopListOptItemConfig.color}"
+            app:imageRes="@{shopListOptItemConfig.icon}"
             tools:src="@drawable/ic_round_delete_forever_24px"
             tools:tint="@color/md_red_A700" />
 
@@ -42,11 +45,13 @@
             android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="@{opt.title}"
+            android:text="@{shopListOptItemConfig.title}"
             android:textSize="16sp"
-            app:texto="@{opt.color}"
+            android:visibility="@{shopListOptItemConfig.id == 0 ? View.GONE : View.VISIBLE}"
+            app:textColorRes="@{shopListOptItemConfig.color}"
             tools:text="Delete Forever"
             tools:textColor="@color/md_red_A700" />
+
 
     </LinearLayout>
 </layout>

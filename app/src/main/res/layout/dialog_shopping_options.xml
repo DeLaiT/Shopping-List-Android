@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="shop"
+            name="shoppingList"
             type="pl.jergro.shopinglist.models.ShoppingList" />
 
     </data>
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
-            android:text="@{shop.name}"
+            android:text="@{shoppingList.name}"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
