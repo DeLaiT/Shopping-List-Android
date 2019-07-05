@@ -1,5 +1,7 @@
 package pl.jergro.shopinglist.ui.views
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import pl.jergro.shopinglist.databinding.ViewShoppingListBinding
@@ -30,7 +32,11 @@ class ShoppingListView(parent: ViewGroup, private val listener: Listener) : Shop
 
         binding.itemsDoneText.text = "$productsDone / $productsCount - ${(donePercentage * 100).toInt()}%"
 
-        binding.progressBar.progress = (donePercentage * 100).toInt()
+        if (donePercentage > 0) {
+            binding.progressBar.progress = (donePercentage * 100).toInt()
+        } else {
+            binding.progressBar.progressDrawable.setColorFilter(Color.parseColor("#BBDEFB"), PorterDuff.Mode.SRC_IN)
+        }
 
     }
 

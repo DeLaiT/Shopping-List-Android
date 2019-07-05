@@ -74,6 +74,7 @@ class MainActivityViewModel : ViewModel() {
                 .map { it.done = !it.done }
         }
         _msgFeedback.postValue("Shopping list has been reseted")
+        syncShoppingListsWithDatabase()
     }
 
     fun deleteShoppingList(shopList: ShoppingList) {
