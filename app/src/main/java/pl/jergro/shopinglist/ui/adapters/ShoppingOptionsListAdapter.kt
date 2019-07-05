@@ -2,19 +2,18 @@ package pl.jergro.shopinglist.ui.adapters
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import pl.jergro.shopinglist.models.ShoppingOptions
+import pl.jergro.shopinglist.models.ShoppingListOptionsItemConfiguration
 import pl.jergro.shopinglist.ui.views.ShoppingOptionsListView
 
-class ShoppingOptionsAdapter(
-    var data: MutableList<ShoppingOptions>,
+class ShoppingOptionsListAdapter(
+    var data: MutableList<ShoppingListOptionsItemConfiguration>,
     private val listener: Listener
-) :
-    RecyclerView.Adapter<ShoppingOptionsAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ShoppingOptionsListAdapter.ViewHolder>(), ShoppingOptionsListView.Listener {
     class ViewHolder(val shopOptListView: ShoppingOptionsListView) :
         RecyclerView.ViewHolder(shopOptListView.binding.root)
 
     interface Listener {
-        fun onOptionItemClicked(shoppingOptions: ShoppingOptions)
+        fun onOptionItemClicked(shoppingListOptionsItemConfiguration: ShoppingListOptionsItemConfiguration)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
@@ -26,14 +25,14 @@ class ShoppingOptionsAdapter(
         holder.shopOptListView.bindView(data[position])
     }
 
-    fun uptData(it: List<ShoppingOptions>) {
+    fun uptData(it: List<ShoppingListOptionsItemConfiguration>) {
         data.clear()
         data.addAll(it)
         notifyDataSetChanged()
     }
 
-    fun onOptionClicked(shoppingOptions: ShoppingOptions) {
-        listener.onOptionItemClicked(shoppingOptions)
+    override fun onOptionClicked(shoppingListOptionsItemConfiguration: ShoppingListOptionsItemConfiguration) {
+        listener.onOptionItemClicked(shoppingListOptionsItemConfiguration)
     }
 
 }

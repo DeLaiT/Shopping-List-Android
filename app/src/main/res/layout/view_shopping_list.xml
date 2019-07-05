@@ -6,12 +6,12 @@
     <data>
 
         <variable
-            name="shop"
+            name="shoppingList"
             type="pl.jergro.shopinglist.models.ShoppingList" />
 
         <variable
-            name="adp"
-            type="pl.jergro.shopinglist.ui.adapters.ShoppingListAdapter" />
+            name="shopListHandler"
+            type="pl.jergro.shopinglist.ui.adapters.handlers.ShoppingListHandler" />
 
     </data>
 
@@ -26,7 +26,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="@{() -> adp.onShopItemClicked(shop)}"
+            android:onClick="@{() -> shopListHandler.onShopListItemClicked(shoppingList)}"
             tools:background="@drawable/list_item_background">
 
             <TextView
@@ -37,7 +37,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/bold"
                 android:padding="5dp"
-                android:text="@{shop.name}"
+                android:text="@{shoppingList.name}"
                 android:textColor="@color/md_grey_900"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/itemsDoneText"
@@ -76,7 +76,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@null"
-                android:onClick="@{() -> adp.onClickOpenMenu(shop)}"
+                android:onClick="@{() -> shopListHandler.onShopListClickMenu(shoppingList)}"
                 android:padding="8dp"
                 android:src="@drawable/ic_round_more_vert_24px"
                 android:tint="@color/md_grey_600"

@@ -13,7 +13,7 @@ import pl.jergro.shopinglist.models.ShoppingList
 import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.ui.adapters.ShoppingListAdapter
 import pl.jergro.shopinglist.ui.dialogs.AddShoppingListDialog
-import pl.jergro.shopinglist.ui.dialogs.OptionsShoppingDialog
+import pl.jergro.shopinglist.ui.dialogs.ShoppingListOptionsDialog
 import pl.jergro.shopinglist.utils.hideKeyboard
 import pl.jergro.shopinglist.viewmodels.MainActivityViewModel
 
@@ -28,8 +28,8 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
     private val addShoppingListDialog by lazy {
         AddShoppingListDialog(viewModel, this)
     }
-    private val shoppingOptionsDialog by lazy {
-        OptionsShoppingDialog(viewModel, this, this)
+    private val shoppingListOptionsDialog by lazy {
+        ShoppingListOptionsDialog(viewModel, this, this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,11 +37,10 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setupBottomBarAndItsItems()
-
-        observers()
+        setupObservers()
     }
 
-    private fun observers() {
+    private fun setupObservers() {
         viewModel.shoppingListsObservable.observe(this, Observer {
             shoppingListAdapter.updateData(it)
         })
@@ -73,14 +72,13 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
 
     override fun onMenuClicked(shoppingList: ShoppingList) {
         viewModel.shoppingListSelected.postValue(shoppingList)
-        shoppingOptionsDialog.show()
+        shoppingListOptionsDialog.show()
     }
 
-    override fun onItemClicked(shoppingList: ShoppingList) {
+    override fun startSelectedShoppingList(shoppingList: ShoppingList) {
         val intent = Intent(this, ShoppingListActivity::class.java)
         intent.putExtra("selectedShoppingList", shoppingList.name)
         startActivity(intent)
         overridePendingTransition(0, 0)
     }
-
 }

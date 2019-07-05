@@ -10,17 +10,17 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import pl.jergro.shopinglist.databinding.DialogShoppingOptionsBinding
 import pl.jergro.shopinglist.models.ShoppingList
-import pl.jergro.shopinglist.models.ShoppingOptions
-import pl.jergro.shopinglist.ui.adapters.ShoppingOptionsAdapter
+import pl.jergro.shopinglist.models.ShoppingListOptionsItemConfiguration
+import pl.jergro.shopinglist.ui.adapters.ShoppingOptionsListAdapter
 import pl.jergro.shopinglist.viewmodels.MainActivityViewModel
 
-class OptionsShoppingDialog(
+class ShoppingListOptionsDialog(
     private val viewModel: MainActivityViewModel,
     private val lifecycleOwner: LifecycleOwner,
     context: Context
-) : BottomSheetDialog(context), ShoppingOptionsAdapter.Listener {
+) : BottomSheetDialog(context), ShoppingOptionsListAdapter.Listener {
 
-    private val shopAdp = ShoppingOptionsAdapter(ArrayList(), this)
+    private val shopAdp = ShoppingOptionsListAdapter(ArrayList(), this)
     private lateinit var _shoppingList: ShoppingList
 
     private val binding =
@@ -39,23 +39,23 @@ class OptionsShoppingDialog(
     }
 
     private fun observers() {
-        viewModel.shopOptions.observe(lifecycleOwner, Observer {
+        viewModel.shopListOptionsItemConfiguration.observe(lifecycleOwner, Observer {
             shopAdp.uptData(it)
         })
         viewModel.shoppingListSel.observe(lifecycleOwner, Observer {
             _shoppingList = it
-            binding.shop = it
+            binding.shoppingList = it
         })
         viewModel.msgFeedback.observe(lifecycleOwner, Observer {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         })
     }
 
-    override fun onOptionItemClicked(shoppingOptions: ShoppingOptions) {
-        when (shoppingOptions.id) {
-            0 -> _shoppingList.let { viewModel.shareShoppingList(it) }
-            1 -> _shoppingList.let { viewModel.resetShoppingList(it) }
-            2 -> _shoppingList.let { viewModel.deleteShoppingList(it) }
+    override fun onOptionItemClicked(shoppingListOptionsItemConfiguration: ShoppingListOptionsItemConfiguration) {
+        when (shoppingListOptionsItemConfiguration.id) {
+            0 -> _shoppingList.let(viewModel::shareShoppingList)
+            1 -> _shoppingList.let(viewModel::resetShoppingList)
+            2 -> _shoppingList.let(viewModel::deleteShoppingList)
         }
         dismiss()
     }

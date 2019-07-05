@@ -12,15 +12,15 @@
             type="pl.jergro.shopinglist.models.Product" />
 
         <variable
-            name="adp"
-            type="pl.jergro.shopinglist.ui.adapters.ProductsListAdapter" />
+            name="prodListHandler"
+            type="pl.jergro.shopinglist.ui.adapters.handlers.ProductListHandler" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> adp.onProductClicked(product)}"
+        android:onClick="@{() -> prodListHandler.onProductClicked(product)}"
         tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -87,7 +87,7 @@
             android:clickable="true"
             android:contentDescription="@null"
             android:focusable="true"
-            android:onClick="@{() -> adp.onProductChecked(product)}"
+            android:onClick="@{() -> prodListHandler.onProductChecked(product)}"
             android:padding="12dp"
             android:paddingStart="20dp"
             android:src="@{product.done ? @drawable/ic_round_check_circle_outline_24px : @drawable/ic_round_radio_button_unchecked_24px}"
