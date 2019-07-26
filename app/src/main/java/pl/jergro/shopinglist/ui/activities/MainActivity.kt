@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ActivityMainBinding
@@ -56,8 +57,8 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
 
     private fun setupShoppingListRecyclerView() {
         binding.shoppingListsRecyclerView.apply {
-            setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             adapter = shoppingListAdapter
         }
     }
@@ -79,6 +80,6 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
         val intent = Intent(this, ShoppingListActivity::class.java)
         intent.putExtra("selectedShoppingList", shoppingList.name)
         startActivity(intent)
-        overridePendingTransition(0, 0)
+        overridePendingTransition(R.anim.still, R.anim.fade_in)
     }
 }

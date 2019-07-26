@@ -15,94 +15,84 @@
 
     </data>
 
-    <androidx.cardview.widget.CardView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/list_item_background">
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{() -> shopListHandler.onShoppingListItemClicked(shoppingList)}">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="@{() -> shopListHandler.onShopListItemClicked(shoppingList)}">
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/bold"
+            android:padding="5dp"
+            android:text="@{shoppingList.name}"
+            android:textColor="@color/md_grey_900"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/itemsDoneText"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Monday shopping" />
 
-            <TextView
-                android:id="@+id/nameText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/bold"
-                android:padding="5dp"
-                android:text="@{shoppingList.name}"
-                android:textColor="@color/md_grey_900"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/itemsDoneText"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Monday shopping" />
+        <TextView
+            android:id="@+id/itemsDoneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:drawableStart="@drawable/ic_round_check_circle_24px"
+            android:drawablePadding="4dp"
+            android:drawableTint="@color/md_grey_600"
+            android:fontFamily="@font/regular"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="10 / 21"
+            android:textColor="@color/md_grey_600"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
-            <TextView
-                android:id="@+id/itemsDoneText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:drawableStart="@drawable/ic_round_check_circle_24px"
-                android:drawablePadding="4dp"
-                android:drawableTint="@color/md_grey_600"
-                android:fontFamily="@font/regular"
-                android:gravity="center_vertical"
-                android:padding="5dp"
-                android:text="10 / 21"
-                android:textColor="@color/md_grey_600"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/progressBar"
-                app:layout_constraintEnd_toStartOf="@+id/imageView2"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameText" />
+        <ImageButton
+            android:id="@+id/imageView2"
+            style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@null"
+            android:onClick="@{() -> shopListHandler.onShopListClickMenu(shoppingList)}"
+            android:padding="8dp"
+            android:src="@drawable/ic_round_more_vert_24px"
+            android:tint="@color/md_grey_600"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/nameText"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <ImageButton
-                android:id="@+id/imageView2"
-                style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@null"
-                android:onClick="@{() -> shopListHandler.onShopListClickMenu(shoppingList)}"
-                android:padding="8dp"
-                android:src="@drawable/ic_round_more_vert_24px"
-                android:tint="@color/md_grey_600"
-                app:layout_constraintBottom_toTopOf="@+id/progressBar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/nameText"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="8dp"
+            android:progressDrawable="@drawable/progress_bar_border"
+            android:secondaryProgress="100"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_width="0dp"
-                android:layout_height="6dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginBottom="8dp"
-                android:progressDrawable="@drawable/progress_bar_border"
-                android:secondaryProgress="100"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

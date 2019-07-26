@@ -9,7 +9,7 @@ class ShoppingListHandler(private val listener: HandlerListener) {
         fun onClickOpenMenu(shoppingList: ShoppingList)
     }
 
-    fun onShopListItemClicked(shoppingList: ShoppingList) {
+    fun onShoppingListItemClicked(shoppingList: ShoppingList) {
         listener.onShopItemClicked(shoppingList)
     }
 

@@ -88,8 +88,6 @@
             android:contentDescription="@null"
             android:focusable="true"
             android:onClick="@{() -> prodListHandler.onProductChecked(product)}"
-            android:padding="12dp"
-            android:paddingStart="20dp"
             android:src="@{product.done ? @drawable/ic_round_check_circle_outline_24px : @drawable/ic_round_radio_button_unchecked_24px}"
             android:tint="@{product.done ? @color/md_blue_A400 : @color/md_grey_400}"
             app:layout_constraintBottom_toBottomOf="parent"
