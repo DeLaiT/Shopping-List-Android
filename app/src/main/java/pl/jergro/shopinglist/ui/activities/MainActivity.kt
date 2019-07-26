@@ -58,8 +58,12 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
     private fun setupShoppingListRecyclerView() {
         binding.shoppingListsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             adapter = shoppingListAdapter
+
+            //`if` prevents from duplicating dividers
+            if(itemDecorationCount == 0) {
+                addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            }
         }
     }
 
