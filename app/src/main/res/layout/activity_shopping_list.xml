@@ -8,42 +8,52 @@
         android:layout_height="match_parent"
         android:background="@color/md_white_1000">
 
-        <ImageView
-            android:id="@+id/backButton"
-            style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="4dp"
-            android:clickable="true"
-            android:contentDescription="@null"
-            android:focusable="true"
-            android:padding="10dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_round_arrow_back_24px"
-            app:layout_constraintBottom_toBottomOf="@+id/shoppingListNameText"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/shoppingListNameText"
-            app:layout_constraintVertical_bias="0.4" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/shoppingListNameText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="8dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/bold"
-            android:gravity="top"
-            android:paddingBottom="5dp"
-            android:paddingTop="2dp"
-            android:singleLine="true"
-            android:textColor="#000"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/backButton"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Shopping list name" />
+        <LinearLayout
+            android:id="@+id/action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:background="#fff"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/backButton"
+                style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="4dp"
+                android:clickable="true"
+                android:contentDescription="@null"
+                android:focusable="true"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_round_arrow_back_24px"
+                app:layout_constraintBottom_toBottomOf="@+id/shoppingListNameText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/shoppingListNameText"
+                app:layout_constraintVertical_bias="0.4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/shoppingListNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="8dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/bold"
+                android:gravity="top"
+                android:paddingTop="2dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:textColor="#000"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/backButton"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Shopping list name" />
+        </LinearLayout>
 
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -78,11 +88,14 @@
             android:id="@+id/productsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:paddingTop="16dp"
+            android:paddingBottom="24dp"
             app:layout_constraintBottom_toTopOf="@+id/bottomBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/shoppingListNameText" />
+            app:layout_constraintTop_toBottomOf="@+id/action_bar"
+            tools:listitem="@layout/view_product" />
 
         <RelativeLayout
             android:id="@+id/bottomBar"

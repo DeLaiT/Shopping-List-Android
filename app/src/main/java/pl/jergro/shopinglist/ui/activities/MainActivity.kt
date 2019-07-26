@@ -14,6 +14,7 @@ import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.ui.adapters.ShoppingListAdapter
 import pl.jergro.shopinglist.ui.dialogs.AddShoppingListDialog
 import pl.jergro.shopinglist.ui.dialogs.ShoppingListOptionsDialog
+import pl.jergro.shopinglist.utils.elevateOnScroll
 import pl.jergro.shopinglist.utils.hideKeyboard
 import pl.jergro.shopinglist.viewmodels.MainActivityViewModel
 
@@ -32,12 +33,17 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
 
         setupBottomBarAndItsItems()
         setupObservers()
+        setupActionBar()
     }
 
     private fun setupObservers() {
         viewModel.shoppingListsObservable.observe(this, Observer {
             shoppingListAdapter.updateData(it)
         })
+    }
+
+    private fun setupActionBar() {
+        binding.actionBar.elevateOnScroll(binding.shoppingListsRecyclerView)
     }
 
     override fun onResume() {

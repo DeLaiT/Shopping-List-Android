@@ -10,16 +10,18 @@
         tools:context=".ui.activities.MainActivity">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:id="@+id/action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
             android:fontFamily="@font/bold"
-            android:text="Shopping lists"
+            android:paddingEnd="8dp"
             android:paddingBottom="5dp"
-            android:textColor="#000"
-            android:textSize="24sp"
+            android:paddingStart="24dp"
+            android:text="Shopping lists"
+            android:background="@color/md_white_1000"
+            android:gravity="center_vertical"
+            android:textColor="@color/md_black_1000"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,9 +29,12 @@
             android:id="@+id/shoppingListsRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="11dp"
+            android:clipToPadding="false"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            tools:listitem="@layout/view_shopping_list"
             app:layout_constraintBottom_toTopOf="@+id/bottomBar"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/action_bar" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/addShoppingListButton"

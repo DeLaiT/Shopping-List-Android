@@ -13,6 +13,7 @@ import pl.jergro.shopinglist.models.Product
 import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.ui.adapters.ProductsListAdapter
 import pl.jergro.shopinglist.ui.dialogs.AddOrUpdateProductDialog
+import pl.jergro.shopinglist.utils.elevateOnScroll
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
 class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
@@ -41,6 +42,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
 
         setupBottomBar()
         setupRecyclerView()
+        setupActionBar()
     }
 
     override fun onStart() {
@@ -57,6 +59,10 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
         binding.bottomBar.outlineProvider = BottomBarOutlineProvider()
 
         binding.addProductButton.setOnClickListener { AddOrUpdateProductDialog(viewModel, this).show() }
+    }
+
+    private fun setupActionBar() {
+        binding.actionBar.elevateOnScroll(binding.productsRecyclerView)
     }
 
     private fun setupRecyclerView() {
