@@ -84,6 +84,6 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
         val intent = Intent(this, ShoppingListActivity::class.java)
         intent.putExtra("selectedShoppingList", shoppingList.name)
         startActivity(intent)
-        overridePendingTransition(R.anim.still, R.anim.fade_in)
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 }

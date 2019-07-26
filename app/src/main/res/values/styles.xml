@@ -11,6 +11,7 @@
         <item name="android:navigationBarColor">#fff</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="android:windowBackground">@color/md_white_1000</item>
     </style>
 
     <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
