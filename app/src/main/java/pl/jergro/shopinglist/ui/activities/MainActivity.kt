@@ -22,15 +22,9 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
     private lateinit var binding: ActivityMainBinding
     private val shoppingListAdapter = ShoppingListAdapter(ArrayList(), this)
 
-    private val viewModel by lazy {
-        ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
-    }
-    private val addShoppingListDialog by lazy {
-        AddShoppingListDialog(viewModel, this)
-    }
-    private val shoppingListOptionsDialog by lazy {
-        ShoppingListOptionsDialog(viewModel, this, this)
-    }
+    private val viewModel by lazy { ViewModelProviders.of(this).get(MainActivityViewModel::class.java) }
+    private val addShoppingListDialog by lazy { AddShoppingListDialog(viewModel, this) }
+    private val shoppingListOptionsDialog by lazy { ShoppingListOptionsDialog(viewModel, this, this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
