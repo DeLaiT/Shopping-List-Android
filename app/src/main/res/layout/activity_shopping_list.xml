@@ -129,7 +129,7 @@
                 android:contentDescription="@null"
                 android:focusable="true"
                 android:padding="12dp"
-                android:src="@drawable/ic_round_search_24px"
+                android:src="@drawable/ic_round_sort_24px"
                 android:tint="@color/md_grey_600" />
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
