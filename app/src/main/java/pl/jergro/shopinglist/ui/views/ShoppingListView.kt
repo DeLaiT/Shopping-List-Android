@@ -1,5 +1,6 @@
 package pl.jergro.shopinglist.ui.views
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.PorterDuff
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import pl.jergro.shopinglist.databinding.ViewShoppingListBinding
 import pl.jergro.shopinglist.models.ShoppingList
 import pl.jergro.shopinglist.ui.adapters.handlers.ShoppingListHandler
 
+@SuppressLint("SetTextI18n")
 class ShoppingListView(parent: ViewGroup, private val listener: Listener) : ShoppingListHandler.HandlerListener {
 
     interface Listener {

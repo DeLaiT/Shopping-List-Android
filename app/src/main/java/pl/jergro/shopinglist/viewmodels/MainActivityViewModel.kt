@@ -20,12 +20,12 @@ class MainActivityViewModel : ViewModel() {
     fun shoppingOptions() {
         val shopOptions = listOf(
             ShoppingListOptionsItemConfiguration(0, R.drawable.ic_share, "Share", R.color.md_grey_900),
-            ShoppingListOptionsItemConfiguration(1, R.drawable.ic_restore, "Reset products", R.color.md_yellow_A700),
+            ShoppingListOptionsItemConfiguration(1, R.drawable.ic_restore, "Reset products", R.color.md_amber_A400),
             ShoppingListOptionsItemConfiguration(
                 2,
                 R.drawable.ic_round_delete_forever_24px,
                 "Delete forever",
-                R.color.md_red_900
+                R.color.md_red_A400
             )
         )
         _shopOptions.postValue(shopOptions)
@@ -63,7 +63,7 @@ class MainActivityViewModel : ViewModel() {
         _shoppingListsObservable.postValue(shoppingLists)
     }
 
-    fun shareShoppingList(shopList: ShoppingList) {
+    fun shareShoppingList(shoppingList: ShoppingList) {
 
     }
 

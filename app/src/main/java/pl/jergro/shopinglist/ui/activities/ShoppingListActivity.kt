@@ -75,7 +75,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
     }
 
     override fun onProductChecked(product: Product) {
-        viewModel.updateProdStatus(product)
+        viewModel.updateProductStatus(product)
     }
 
     override fun finish() {

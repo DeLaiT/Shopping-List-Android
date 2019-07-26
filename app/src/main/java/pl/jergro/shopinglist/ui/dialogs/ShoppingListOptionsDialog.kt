@@ -40,7 +40,7 @@ class ShoppingListOptionsDialog(
 
     private fun observers() {
         viewModel.shopListOptionsItemConfiguration.observe(lifecycleOwner, Observer {
-            shopAdp.uptData(it)
+            shopAdp.updateData(it)
         })
         viewModel.shoppingListSel.observe(lifecycleOwner, Observer {
             _shoppingList = it

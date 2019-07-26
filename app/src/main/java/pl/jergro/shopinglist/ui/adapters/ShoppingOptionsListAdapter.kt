@@ -25,7 +25,7 @@ class ShoppingOptionsListAdapter(
         holder.shopOptListView.bindView(data[position])
     }
 
-    fun uptData(it: List<ShoppingListOptionsItemConfiguration>) {
+    fun updateData(it: List<ShoppingListOptionsItemConfiguration>) {
         data.clear()
         data.addAll(it)
         notifyDataSetChanged()
