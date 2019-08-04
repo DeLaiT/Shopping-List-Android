@@ -1,5 +1,6 @@
 package pl.jergro.shopinglist.ui.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -15,11 +16,11 @@ import pl.jergro.shopinglist.ui.adapters.ProductsListAdapter
 import pl.jergro.shopinglist.ui.dialogs.AddOrUpdateProductDialog
 import pl.jergro.shopinglist.utils.elevateOnScroll
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
-import timber.log.Timber
 
 class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
     private lateinit var binding: ActivityShoppingListBinding
     private lateinit var productsListAdapter: ProductsListAdapter
+    private lateinit var shoppingListName: String
 
     private val viewModel by lazy {
         ViewModelProviders.of(this).get(ShoppingListViewModel::class.java)
@@ -32,14 +33,14 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val shoppingListName = intent.getStringExtra("selectedShoppingList")
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_shopping_list)
 
+        shoppingListName = intent.getStringExtra("selectedShoppingList")
         viewModel.loadShoppingListByName(shoppingListName)
 
         binding.shoppingListNameText.text = shoppingListName
         binding.backButton.setOnClickListener { finish() }
+        binding.editButton.setOnClickListener { startShoppingListEditActivity() }
 
         setupBottomBar()
         setupRecyclerView()
@@ -48,12 +49,12 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
 
     override fun onStart() {
         super.onStart()
-        viewModel.productsObservable.observe(this, productsObserver)
+        viewModel.productsList.observe(this, productsObserver)
     }
 
     override fun onStop() {
         super.onStop()
-        viewModel.productsObservable.removeObserver(productsObserver)
+        viewModel.productsList.removeObserver(productsObserver)
     }
 
     private fun setupBottomBar() {
@@ -83,6 +84,13 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
 
     override fun onProductChecked(product: Product) {
         viewModel.updateProductStatus(product)
+    }
+
+    private fun startShoppingListEditActivity() {
+        val intent = Intent(this, ShoppingListEditActivity::class.java)
+        intent.putExtra("selectedShoppingList", shoppingListName)
+        startActivity(intent)
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
     override fun finish() {

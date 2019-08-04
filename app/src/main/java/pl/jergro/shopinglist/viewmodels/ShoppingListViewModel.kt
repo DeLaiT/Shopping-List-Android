@@ -7,17 +7,17 @@ import pl.jergro.shopinglist.models.Product
 import pl.jergro.shopinglist.models.ShoppingList
 
 class ShoppingListViewModel : ViewModel() {
-    val productsObservable = MutableLiveData<List<Product>>()
+    val productsList = MutableLiveData<List<Product>>()
     private val realm by lazy { Realm.getDefaultInstance() }
     private lateinit var selectedShoppingList: ShoppingList
 
     fun loadShoppingListByName(shoppingListName: String) {
         selectedShoppingList = realm.where(ShoppingList::class.java).equalTo("name", shoppingListName).findFirst()!!
 
-        productsObservable.postValue(selectedShoppingList.products)
+        productsList.postValue(selectedShoppingList.products)
 
         selectedShoppingList.products.addChangeListener { products ->
-            productsObservable.postValue(products)
+            productsList.postValue(products)
         }
     }
 
