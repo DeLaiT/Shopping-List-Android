@@ -7,7 +7,7 @@
 
         <import type="android.view.View" />
 
-        <import type="pl.jergro.shopinglist.ui.binding_adp.Binding_adaptersKt" />
+        <import type="pl.jergro.shopinglist.ui.binding_adapters.BindingAdaptersKt" />
 
         <variable
             name="shopListOptItemConfig"

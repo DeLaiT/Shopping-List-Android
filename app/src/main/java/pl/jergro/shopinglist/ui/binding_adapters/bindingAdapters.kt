@@ -1,4 +1,4 @@
-package pl.jergro.shopinglist.ui.binding_adp
+package pl.jergro.shopinglist.ui.binding_adapters
 
 import android.widget.ImageView
 import android.widget.TextView
