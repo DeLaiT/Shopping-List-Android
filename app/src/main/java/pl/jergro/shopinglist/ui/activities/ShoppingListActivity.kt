@@ -49,7 +49,6 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
     override fun onStart() {
         super.onStart()
         viewModel.productsObservable.observe(this, productsObserver)
-
     }
 
     override fun onStop() {
