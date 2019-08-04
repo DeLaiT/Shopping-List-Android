@@ -15,6 +15,7 @@ import pl.jergro.shopinglist.ui.adapters.ProductsListAdapter
 import pl.jergro.shopinglist.ui.dialogs.AddOrUpdateProductDialog
 import pl.jergro.shopinglist.utils.elevateOnScroll
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
+import timber.log.Timber
 
 class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
     private lateinit var binding: ActivityShoppingListBinding
@@ -48,6 +49,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
     override fun onStart() {
         super.onStart()
         viewModel.productsObservable.observe(this, productsObserver)
+
     }
 
     override fun onStop() {

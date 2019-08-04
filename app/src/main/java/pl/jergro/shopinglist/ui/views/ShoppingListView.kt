@@ -1,16 +1,17 @@
 package pl.jergro.shopinglist.ui.views
 
 import android.annotation.SuppressLint
-import android.graphics.Color
+import android.content.Context
 import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ViewShoppingListBinding
 import pl.jergro.shopinglist.models.ShoppingList
 import pl.jergro.shopinglist.ui.adapters.handlers.ShoppingListHandler
 
 @SuppressLint("SetTextI18n")
-class ShoppingListView(parent: ViewGroup, private val listener: Listener) : ShoppingListHandler.HandlerListener {
+class ShoppingListView(val parent: ViewGroup, private val listener: Listener) : ShoppingListHandler.HandlerListener {
 
     interface Listener {
         fun onShopItemClicked(shoppingList: ShoppingList)
@@ -18,6 +19,7 @@ class ShoppingListView(parent: ViewGroup, private val listener: Listener) : Shop
     }
 
     val binding = ViewShoppingListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    val context: Context get() = parent.context
 
     fun bind(shoppingList: ShoppingList) {
         binding.shoppingList = shoppingList
@@ -36,10 +38,13 @@ class ShoppingListView(parent: ViewGroup, private val listener: Listener) : Shop
 
         if (donePercentage > 0) {
             binding.progressBar.progress = (donePercentage * 100).toInt()
+            binding.progressBar.progressDrawable.colorFilter = null
         } else {
-            binding.progressBar.progressDrawable.setColorFilter(Color.parseColor("#BBDEFB"), PorterDuff.Mode.SRC_IN)
+            binding.progressBar.progressDrawable.setColorFilter(
+                context.getColor(R.color.md_blue_50),
+                PorterDuff.Mode.SRC_IN
+            )
         }
-
     }
 
     override fun onShopItemClicked(shoppingList: ShoppingList) {
