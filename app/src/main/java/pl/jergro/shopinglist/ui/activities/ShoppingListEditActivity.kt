@@ -6,13 +6,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ActivityShoppingListEditBinding
 import pl.jergro.shopinglist.models.Product
 import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.ui.adapters.EditProductsListAdapter
+import pl.jergro.shopinglist.ui.adapters.ItemTouchHelperAdapter
 import pl.jergro.shopinglist.ui.adapters.ProductsListAdapter
+import pl.jergro.shopinglist.ui.adapters.SimpleItemTouchHelperCallback
 import pl.jergro.shopinglist.ui.views.EditProductView
 import pl.jergro.shopinglist.utils.elevateOnScroll
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
@@ -26,7 +29,9 @@ class ShoppingListEditActivity : AppCompatActivity() {
     }
 
     private val productsObserver = Observer { products: List<Product> ->
-       productsListAdapter.updateData(products)
+        val arrayList = ArrayList<Product>()
+        products.forEach { arrayList.add(it) }
+       productsListAdapter.updateData(arrayList)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,12 +73,16 @@ class ShoppingListEditActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        productsListAdapter = EditProductsListAdapter(emptyList())
+        productsListAdapter = EditProductsListAdapter(ArrayList())
 
         binding.productsRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@ShoppingListEditActivity)
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             adapter = productsListAdapter
+
+            val touchCallback = SimpleItemTouchHelperCallback(adapter as ItemTouchHelperAdapter)
+            val itemTouchHelper = ItemTouchHelper(touchCallback)
+            itemTouchHelper.attachToRecyclerView(binding.productsRecyclerView)
         }
     }
 
