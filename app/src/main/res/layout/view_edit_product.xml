@@ -11,34 +11,43 @@
             name="product"
             type="pl.jergro.shopinglist.models.Product" />
 
-        <variable
-            name="prodListHandler"
-            type="pl.jergro.shopinglist.ui.adapters.handlers.ProductListHandler" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> prodListHandler.onProductClicked(product)}"
         tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/indexText"
+            android:layout_width="34dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/medium"
+            android:maxLines="1"
+            android:textColor="@color/md_grey_700"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="999." />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/productNameText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:ellipsize="end"
             android:fontFamily="@font/bold"
             android:maxLines="1"
+            android:textColor="@color/md_grey_900"
             android:padding="12dp"
             android:text="@{product.name}"
-            android:textColor="@{product.done ? @color/md_grey_400 : @color/md_grey_900}"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/productPriceText"
-            app:layout_constraintEnd_toStartOf="@+id/checkbox"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/indexText"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Product name" />
 
@@ -46,13 +55,12 @@
             android:id="@+id/imageView"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="2dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_round_monetization_on_24px"
-            android:tint="@{product.done ? @color/md_grey_400 : @color/md_grey_500}"
             android:visibility="@{product.price > 0.0 ? View.VISIBLE : View.GONE}"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/productNameText"
             app:layout_constraintTop_toTopOf="@+id/productPriceText" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -68,7 +76,6 @@
             android:paddingEnd="12dp"
             android:paddingBottom="12dp"
             android:text="@{String.valueOf(product.price)}"
-            android:textColor="@{product.done ? @color/md_grey_400 : @color/md_grey_500}"
             android:textSize="14sp"
             android:visibility="@{product.price > 0.0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -78,26 +85,6 @@
             tools:text="0.00"
             tools:textColor="@color/md_grey_500"
             tools:visibility="visible" />
-
-        <ImageView
-            android:id="@+id/checkbox"
-            style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
-            android:layout_width="90dp"
-            android:layout_height="0dp"
-            android:clickable="true"
-            android:contentDescription="@null"
-            android:focusable="true"
-            android:onClick="@{() -> prodListHandler.onProductChecked(product)}"
-            android:src="@{product.done ? @drawable/ic_round_check_circle_outline_24px : @drawable/ic_round_radio_button_unchecked_24px}"
-            android:tint="@{product.done ? @color/md_blue_A400 : @color/md_grey_400}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/productNameText"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlSymmetry"
-            tools:src="@drawable/ic_round_check_circle_outline_24px"
-            tools:tint="@color/md_blue_A400" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

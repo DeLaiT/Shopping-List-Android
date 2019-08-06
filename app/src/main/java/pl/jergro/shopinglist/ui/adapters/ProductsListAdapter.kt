@@ -7,7 +7,7 @@ import pl.jergro.shopinglist.ui.views.ProductView
 
 class ProductsListAdapter(var data: List<Product>, private val listener: Listener) :
     RecyclerView.Adapter<ProductsListAdapter.ViewHolder>(), ProductView.Listener {
-    class ViewHolder(val shoppingListView: ProductView) : RecyclerView.ViewHolder(shoppingListView.binding.root)
+    class ViewHolder(val productView: ProductView) : RecyclerView.ViewHolder(productView.binding.root)
 
     interface Listener {
         fun onProductItemClicked(product: Product)
@@ -19,7 +19,7 @@ class ProductsListAdapter(var data: List<Product>, private val listener: Listene
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.shoppingListView.bind(data[position])
+        holder.productView.bind(data[position])
     }
 
     override fun getItemCount(): Int = data.size

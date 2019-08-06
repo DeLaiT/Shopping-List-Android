@@ -10,20 +10,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ActivityShoppingListEditBinding
 import pl.jergro.shopinglist.models.Product
+import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
+import pl.jergro.shopinglist.ui.adapters.EditProductsListAdapter
 import pl.jergro.shopinglist.ui.adapters.ProductsListAdapter
+import pl.jergro.shopinglist.ui.views.EditProductView
 import pl.jergro.shopinglist.utils.elevateOnScroll
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
 class ShoppingListEditActivity : AppCompatActivity() {
     private lateinit var binding: ActivityShoppingListEditBinding
-    private lateinit var productsListAdapter: ProductsListAdapter
+    private lateinit var productsListAdapter: EditProductsListAdapter
 
     private val viewModel by lazy {
         ViewModelProviders.of(this).get(ShoppingListViewModel::class.java)
     }
 
     private val productsObserver = Observer { products: List<Product> ->
-        //TODO observe product list for changes
+       productsListAdapter.updateData(products)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +39,7 @@ class ShoppingListEditActivity : AppCompatActivity() {
         setupInitialUI(shoppingListName)
         setupActionBar()
         setupRecyclerView()
+        setupBottomBar()
     }
 
     override fun onStart() {
@@ -50,22 +54,27 @@ class ShoppingListEditActivity : AppCompatActivity() {
 
     private fun setupInitialUI(shoppingListName: String) {
         binding.shoppingListNameText.text = shoppingListName
-        binding.saveButton.setOnClickListener { finish() }
-        binding.cancelButton.setOnClickListener { finish() }
     }
 
     private fun setupActionBar() {
         binding.actionBar.elevateOnScroll(binding.productsRecyclerView)
     }
 
+    private fun setupBottomBar() {
+        binding.bottomBar.outlineProvider = BottomBarOutlineProvider()
+
+        binding.saveButton.setOnClickListener { finish() }
+        binding.cancelButton.setOnClickListener { finish() }
+    }
+
     private fun setupRecyclerView() {
-//        productsListAdapter = ProductsListAdapter(emptyList(), this)
-//
-//        binding.productsRecyclerView.apply {
-//            layoutManager = LinearLayoutManager(this@ShoppingListActivity)
-//            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-//            adapter = productsListAdapter
-//        }
+        productsListAdapter = EditProductsListAdapter(emptyList())
+
+        binding.productsRecyclerView.apply {
+            layoutManager = LinearLayoutManager(this@ShoppingListEditActivity)
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            adapter = productsListAdapter
+        }
     }
 
     override fun finish() {
