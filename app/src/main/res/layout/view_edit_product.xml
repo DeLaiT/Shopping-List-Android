@@ -20,35 +20,21 @@
         tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/indexText"
-            android:layout_width="34dp"
-            android:textSize="16sp"
-            android:fontFamily="@font/medium"
-            android:maxLines="1"
-            android:textColor="@color/md_grey_700"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="999." />
-
-        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/productNameText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
             android:fontFamily="@font/bold"
             android:maxLines="1"
-            android:textColor="@color/md_grey_900"
             android:padding="12dp"
             android:text="@{product.name}"
+            android:textColor="@color/md_grey_900"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/productPriceText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/indexText"
+            app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Product name" />
 
@@ -86,6 +72,19 @@
             tools:text="0.00"
             tools:textColor="@color/md_grey_500"
             tools:visibility="visible" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_round_drag_handle_24px"
+            android:tint="@color/md_grey_500"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,7 +3,6 @@ package pl.jergro.shopinglist.ui.adapters
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import androidx.recyclerview.widget.RecyclerView
-import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.models.Product
 import pl.jergro.shopinglist.ui.views.EditProductView
 import pl.jergro.shopinglist.utils.dp
@@ -20,6 +19,8 @@ class EditProductsListAdapter(var data: ArrayList<Product>) :
 
             view.animate()
                 .translationZ(3.dp(context).toFloat())
+                .scaleX(1.03f)
+                .scaleY(1.03f)
                 .setDuration(200L)
                 .setInterpolator(DecelerateInterpolator())
                 .start()
@@ -30,6 +31,8 @@ class EditProductsListAdapter(var data: ArrayList<Product>) :
 
             view.animate()
                 .translationZ(0.0f)
+                .scaleX(1.0f)
+                .scaleY(1.0f)
                 .setDuration(200L)
                 .setInterpolator(DecelerateInterpolator())
                 .start()
@@ -41,7 +44,7 @@ class EditProductsListAdapter(var data: ArrayList<Product>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.productView.bind(data[position], position + 1)
+        holder.productView.bind(data[position])
     }
 
     override fun getItemCount(): Int = data.size

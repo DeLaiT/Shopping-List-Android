@@ -8,9 +8,8 @@ import pl.jergro.shopinglist.models.Product
 class EditProductView(parent: ViewGroup) {
     val binding = ViewEditProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-    fun bind(product: Product, index: Int) {
+    fun bind(product: Product) {
         binding.product = product
-        binding.indexText.text = "$index."
         binding.executePendingBindings()
     }
 }
