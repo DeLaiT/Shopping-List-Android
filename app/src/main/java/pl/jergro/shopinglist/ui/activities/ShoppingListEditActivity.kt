@@ -14,15 +14,12 @@ import pl.jergro.shopinglist.models.Product
 import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.ui.adapters.EditProductsListAdapter
 import pl.jergro.shopinglist.ui.adapters.ItemTouchHelperAdapter
-import pl.jergro.shopinglist.ui.adapters.ProductsListAdapter
 import pl.jergro.shopinglist.ui.adapters.SimpleItemTouchHelperCallback
-import pl.jergro.shopinglist.ui.views.EditProductView
-import pl.jergro.shopinglist.utils.elevateOnScroll
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
 class ShoppingListEditActivity : AppCompatActivity() {
     private lateinit var binding: ActivityShoppingListEditBinding
-    private lateinit var productsListAdapter: EditProductsListAdapter
+    private lateinit var editProductsListAdapter: EditProductsListAdapter
 
     private val viewModel by lazy {
         ViewModelProviders.of(this).get(ShoppingListViewModel::class.java)
@@ -31,7 +28,8 @@ class ShoppingListEditActivity : AppCompatActivity() {
     private val productsObserver = Observer { products: List<Product> ->
         val arrayList = ArrayList<Product>()
         products.forEach { arrayList.add(it) }
-       productsListAdapter.updateData(arrayList)
+        arrayList.sortBy { it.index }
+        editProductsListAdapter.updateData(arrayList)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,10 +37,9 @@ class ShoppingListEditActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_shopping_list_edit)
 
         val shoppingListName = intent.getStringExtra("selectedShoppingList")
-        viewModel.loadShoppingListByName(shoppingListName)
+        viewModel.loadProductsByShoppingListName(shoppingListName)
 
         setupInitialUI(shoppingListName)
-        setupActionBar()
         setupRecyclerView()
         setupBottomBar()
     }
@@ -61,24 +58,27 @@ class ShoppingListEditActivity : AppCompatActivity() {
         binding.shoppingListNameText.text = shoppingListName
     }
 
-    private fun setupActionBar() {
-        binding.actionBar.elevateOnScroll(binding.productsRecyclerView)
-    }
-
     private fun setupBottomBar() {
         binding.bottomBar.outlineProvider = BottomBarOutlineProvider()
 
-        binding.saveButton.setOnClickListener { finish() }
+        binding.saveButton.setOnClickListener {
+            updateProductsIndexes()
+            finish()
+        }
         binding.cancelButton.setOnClickListener { finish() }
     }
 
+    private fun updateProductsIndexes() {
+        viewModel.updateProductsIndexesByListOrder(editProductsListAdapter.data)
+    }
+
     private fun setupRecyclerView() {
-        productsListAdapter = EditProductsListAdapter(ArrayList())
+        editProductsListAdapter = EditProductsListAdapter(ArrayList())
 
         binding.productsRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@ShoppingListEditActivity)
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-            adapter = productsListAdapter
+            adapter = editProductsListAdapter
 
             val touchCallback = SimpleItemTouchHelperCallback(adapter as ItemTouchHelperAdapter)
             val itemTouchHelper = ItemTouchHelper(touchCallback)

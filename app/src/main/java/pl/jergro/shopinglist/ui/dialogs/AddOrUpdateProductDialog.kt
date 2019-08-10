@@ -28,7 +28,11 @@ class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, con
 
         if (binding.isEditing) {
             binding.newProductNameEditText.setText(editedProduct?.name)
-            binding.newProductPriceEditText.setText(editedProduct?.price.toString())
+            if(editedProduct?.price != 0.0) {
+                binding.newProductPriceEditText.setText(editedProduct?.price.toString())
+            } else {
+                binding.newProductPriceEditText.text?.clear()
+            }
         } else {
             binding.newProductNameEditText.text?.clear()
             binding.newProductPriceEditText.text?.clear()
@@ -51,10 +55,10 @@ class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, con
             Toast.makeText(context, "Please enter correct shopping list name", Toast.LENGTH_SHORT).show()
         else {
             if (editedProduct != null) {
-                val product = Product(editedProduct?.id!!, productName, false, productPrice.toDouble())
+                val product = Product(editedProduct?.id!!, productName, false, productPrice.toDouble(), 0)
                 viewModel.updateProduct(product)
             } else {
-                val product = Product(UUID.randomUUID().toString(), productName, false, productPrice.toDouble())
+                val product = Product(UUID.randomUUID().toString(), productName, false, productPrice.toDouble(), 0)
                 viewModel.addProductToSelectedShoppingList(product)
             }
 

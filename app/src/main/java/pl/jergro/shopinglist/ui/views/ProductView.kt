@@ -29,5 +29,4 @@ class ProductView(parent: ViewGroup, private val listener: Listener) :
     override fun onProductClicked(product: Product) {
         listener.onProductClicked(product)
     }
-
 }

@@ -18,7 +18,7 @@ class EditProductsListAdapter(var data: ArrayList<Product>) :
             val context = view.context
 
             view.animate()
-                .translationZ(3.dp(context).toFloat())
+                .translationZ(2.dp(context).toFloat())
                 .scaleX(1.03f)
                 .scaleY(1.03f)
                 .setDuration(200L)
@@ -51,9 +51,8 @@ class EditProductsListAdapter(var data: ArrayList<Product>) :
 
     override fun onItemMove(fromPos: Int, toPos: Int) {
         val prod = data.removeAt(fromPos)
-        val targetPos = if (toPos > fromPos) toPos - 1 else fromPos
 
-        data.add(targetPos, prod)
+        data.add(toPos, prod)
         notifyItemMoved(fromPos, toPos)
     }
 

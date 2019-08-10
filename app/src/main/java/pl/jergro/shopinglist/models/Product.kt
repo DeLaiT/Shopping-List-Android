@@ -8,7 +8,8 @@ open class Product(
     var id: String,
     var name: String,
     var done: Boolean,
-    var price: Double
+    var price: Double,
+    var index: Int
 ) : RealmObject() {
-    constructor() : this("", "undefined", false, 0.0)
+    constructor() : this("", "undefined", false, 0.0, 0)
 }

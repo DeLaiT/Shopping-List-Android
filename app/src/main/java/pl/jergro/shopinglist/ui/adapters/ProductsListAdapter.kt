@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.RecyclerView
 import pl.jergro.shopinglist.models.Product
 import pl.jergro.shopinglist.ui.views.ProductView
 
-class ProductsListAdapter(var data: List<Product>, private val listener: Listener) :
+class ProductsListAdapter(private val listener: Listener) :
     RecyclerView.Adapter<ProductsListAdapter.ViewHolder>(), ProductView.Listener {
     class ViewHolder(val productView: ProductView) : RecyclerView.ViewHolder(productView.binding.root)
+
+    private var data: List<Product>? = null
 
     interface Listener {
         fun onProductItemClicked(product: Product)
@@ -19,13 +21,13 @@ class ProductsListAdapter(var data: List<Product>, private val listener: Listene
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.productView.bind(data[position])
+        holder.productView.bind(data!![position])
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = data?.size ?: 0
 
     fun updateData(newData: List<Product>) {
-        data = newData
+        data = newData.sortedBy { it.index }
         notifyDataSetChanged()
     }
 

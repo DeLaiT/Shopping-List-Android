@@ -36,7 +36,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_shopping_list)
 
         shoppingListName = intent.getStringExtra("selectedShoppingList")
-        viewModel.loadShoppingListByName(shoppingListName)
+        viewModel.loadProductsByShoppingListName(shoppingListName)
 
         binding.shoppingListNameText.text = shoppingListName
         binding.backButton.setOnClickListener { finish() }
@@ -68,7 +68,7 @@ class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
     }
 
     private fun setupRecyclerView() {
-        productsListAdapter = ProductsListAdapter(emptyList(), this)
+        productsListAdapter = ProductsListAdapter(this)
 
         binding.productsRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@ShoppingListActivity)
