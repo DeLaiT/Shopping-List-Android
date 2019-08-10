@@ -40,9 +40,9 @@ class MainActivityViewModel : ViewModel() {
     fun createShoppingListWithName(name: String) {
         val shoppingList = ShoppingList(name, RealmList())
 
-        _realm.beginTransaction()
-        _realm.copyToRealm(shoppingList)
-        _realm.commitTransaction()
+        _realm.executeTransaction {
+            _realm.copyToRealm(shoppingList)
+        }
 
         syncShoppingListsWithDatabase()
         Timber.d("Created shopping list with name: $name")

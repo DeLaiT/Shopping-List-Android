@@ -27,7 +27,7 @@ class ProductsListAdapter(private val listener: Listener) :
     override fun getItemCount(): Int = data?.size ?: 0
 
     fun updateData(newData: List<Product>) {
-        data = newData.sortedBy { it.index }
+        data = newData.sortedWith(compareBy(Product::done, Product::index))
         notifyDataSetChanged()
     }
 

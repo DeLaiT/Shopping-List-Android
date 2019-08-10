@@ -94,7 +94,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="12dp"
-                android:src="@drawable/ic_round_search_24px"
+                android:src="@drawable/ic_round_info_24px"
                 android:tint="@color/md_grey_600" />
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
