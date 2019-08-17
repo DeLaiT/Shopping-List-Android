@@ -6,14 +6,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/md_white_1000">
+        android:background="?attr/bgColor">
 
 
         <LinearLayout
             android:id="@+id/action_bar"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:background="#fff"
+            android:background="?attr/bgColor"
             android:elevation="3dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -31,7 +31,7 @@
                 android:paddingTop="2dp"
                 android:paddingBottom="5dp"
                 android:singleLine="true"
-                android:textColor="#000"
+                android:textColor="?attr/titleColor"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/backButton"
@@ -56,7 +56,7 @@
             android:id="@+id/bottomBar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="#fff"
+            android:background="?attr/bgColor"
             android:elevation="3dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -71,7 +71,7 @@
                 android:contentDescription="@null"
                 android:focusable="true"
                 android:src="@drawable/ic_round_close_24px"
-                android:tint="@color/md_grey_600" />
+                android:tint="?attr/textActiveColor" />
 
             <ImageView
                 android:id="@+id/saveButton"
@@ -85,7 +85,7 @@
                 android:contentDescription="@null"
                 android:focusable="true"
                 android:src="@drawable/ic_round_check_24px"
-                android:tint="@color/md_grey_600" />
+                android:tint="?attr/textActiveColor" />
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

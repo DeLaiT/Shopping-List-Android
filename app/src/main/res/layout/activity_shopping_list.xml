@@ -6,14 +6,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/md_white_1000">
+        android:background="?attr/bgColor">
 
 
         <LinearLayout
             android:id="@+id/action_bar"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:background="#fff"
+            android:background="?attr/bgColor"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintTop_toTopOf="parent">
@@ -30,6 +30,7 @@
                 android:padding="10dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_round_arrow_back_24px"
+                android:tint="?attr/titleColor"
                 app:layout_constraintBottom_toBottomOf="@+id/shoppingListNameText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/shoppingListNameText"
@@ -47,7 +48,7 @@
                 android:paddingTop="2dp"
                 android:paddingBottom="5dp"
                 android:singleLine="true"
-                android:textColor="#000"
+                android:textColor="?attr/titleColor"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/backButton"
@@ -64,7 +65,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/round_button_background"
-            android:backgroundTint="@color/md_blue_A400"
+            android:backgroundTint="?attr/accentColor"
             android:clickable="true"
             android:drawableStart="@drawable/ic_round_add_24px"
             android:drawablePadding="8dp"
@@ -78,7 +79,7 @@
             android:paddingEnd="24dp"
             android:paddingBottom="10dp"
             android:text="@string/add_product"
-            android:textColor="#fff"
+            android:textColor="@color/md_white_1000"
             app:layout_constraintBottom_toTopOf="@+id/bottomBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +102,7 @@
             android:id="@+id/bottomBar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="#fff"
+            android:background="?attr/bgColor"
             android:elevation="3dp"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -117,7 +118,7 @@
                 android:focusable="true"
                 android:padding="12dp"
                 android:src="@drawable/ic_round_settings_24px"
-                android:tint="@color/md_grey_600" />
+                android:tint="?attr/textActiveColor" />
 
             <ImageView
                 android:id="@+id/editButton"
@@ -132,7 +133,7 @@
                 android:focusable="true"
                 android:padding="12dp"
                 android:src="@drawable/ic_round_sort_24px"
-                android:tint="@color/md_grey_600" />
+                android:tint="?attr/textActiveColor" />
         </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

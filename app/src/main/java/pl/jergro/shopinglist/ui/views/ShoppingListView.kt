@@ -9,6 +9,7 @@ import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.ViewShoppingListBinding
 import pl.jergro.shopinglist.models.ShoppingList
 import pl.jergro.shopinglist.ui.adapters.handlers.ShoppingListHandler
+import pl.jergro.shopinglist.ui.binding_adapters.getColorByAttr
 
 @SuppressLint("SetTextI18n")
 class ShoppingListView(val parent: ViewGroup, private val listener: Listener) : ShoppingListHandler.HandlerListener {
@@ -19,7 +20,7 @@ class ShoppingListView(val parent: ViewGroup, private val listener: Listener) : 
     }
 
     val binding = ViewShoppingListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-    val context: Context get() = parent.context
+    val context: Context by lazy { parent.context }
 
     fun bind(shoppingList: ShoppingList) {
         binding.shoppingList = shoppingList
@@ -41,7 +42,7 @@ class ShoppingListView(val parent: ViewGroup, private val listener: Listener) : 
             binding.progressBar.progressDrawable.colorFilter = null
         } else {
             binding.progressBar.progressDrawable.setColorFilter(
-                context.getColor(R.color.md_blue_50),
+                context.getColor(getColorByAttr(context, R.attr.secondaryAccentColor)),
                 PorterDuff.Mode.SRC_IN
             )
         }

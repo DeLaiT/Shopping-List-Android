@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="titleColor" format="reference"/>
+    <attr name="textActiveColor" format="reference"/>
+    <attr name="textDisabledColor" format="reference"/>
+    <attr name="accentColor" format="reference"/>
+    <attr name="bgColor" format="reference"/>
+    <attr name="secondaryAccentColor" format="reference"/>
+</resources>

@@ -29,7 +29,8 @@
                 android:paddingTop="6dp"
                 android:paddingBottom="6dp"
                 android:singleLine="true"
-                android:textColor="@color/md_grey_900"
+                android:textColor="?attr/titleColor"
+                android:textColorHint="?attr/textDisabledColor"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +47,7 @@
                 android:fontFamily="@font/medium"
                 android:padding="8dp"
                 android:text="Add"
-                android:textColor="@color/md_blue_A400"
+                android:textColor="?attr/colorAccent"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

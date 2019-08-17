@@ -19,7 +19,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/medium"
             android:text="@string/app_name"
-            android:textColor="#000"
+            android:textColor="?attr/titleColor"
             android:textSize="20sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -28,6 +28,7 @@
             android:layout_marginStart="16dp"
             android:fontFamily="@font/light"
             android:text="@{BuildConfig.VERSION_NAME}"
+            android:textColor="?attr/textActiveColor"
             tools:text="1.2.4" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -38,7 +39,7 @@
             android:layout_marginBottom="16dp"
             android:lineSpacingMultiplier="1.2"
             android:text="Created by Jeremiasz Grodzicki\nwith help from Vicor Vicari"
-            android:textColor="@color/md_grey_700" />
+            android:textColor="?attr/textActiveColor" />
 
     </LinearLayout>
 </layout>

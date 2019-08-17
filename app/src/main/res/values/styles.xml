@@ -3,21 +3,28 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/md_blue_A400</item>
-        <item name="android:statusBarColor">@color/md_white_1000</item>
+        <item name="colorPrimary">?attr/accentColor</item>
+        <item name="colorPrimaryDark">?attr/accentColor</item>
+        <item name="colorAccent">?attr/accentColor</item>
+        <item name="android:statusBarColor">?attr/bgColor</item>
         <item name="android:windowTranslucentStatus">false</item>
-        <item name="android:navigationBarColor">#fff</item>
+        <item name="android:navigationBarColor">?attr/bgColor</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
-        <item name="android:windowBackground">@color/md_white_1000</item>
+        <item name="android:windowBackground">?attr/bgColor</item>
+
+        <item name="titleColor">@color/md_black_1000</item>
+        <item name="textActiveColor">@color/md_grey_600</item>
+        <item name="textDisabledColor">@color/md_grey_400</item>
+        <item name="accentColor">@color/md_purple_A400</item>
+        <item name="bgColor">@color/md_white_1000</item>
+        <item name="secondaryAccentColor">@color/md_purple_50</item>
     </style>
 
     <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppModalStyle</item>
         <item name="android:windowIsFloating">false</item>
-        <item name="android:navigationBarColor">#fff</item>
+        <item name="android:navigationBarColor">?attr/bgColor</item>
         <item name="android:windowSoftInputMode">adjustResize</item>
         <item name="android:statusBarColor">#666666</item>
     </style>
