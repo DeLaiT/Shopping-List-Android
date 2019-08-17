@@ -73,6 +73,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageView
+                android:id="@+id/settingsButton"
                 style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
@@ -85,6 +86,7 @@
                 android:tint="@color/md_grey_600" />
 
             <ImageView
+                android:id="@+id/infoButton"
                 style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
                 android:layout_width="48dp"
                 android:layout_height="48dp"

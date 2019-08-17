@@ -45,7 +45,7 @@
             android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:fontFamily="@font/bold"
+            android:fontFamily="@font/medium"
             android:text="@{shopListOptItemConfig.title}"
             android:textSize="16sp"
             android:visibility="@{shopListOptItemConfig.id == 0 ? View.GONE : View.VISIBLE}"

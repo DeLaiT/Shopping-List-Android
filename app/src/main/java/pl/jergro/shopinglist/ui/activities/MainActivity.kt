@@ -13,6 +13,7 @@ import pl.jergro.shopinglist.databinding.ActivityMainBinding
 import pl.jergro.shopinglist.models.ShoppingList
 import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.ui.adapters.ShoppingListAdapter
+import pl.jergro.shopinglist.ui.dialogs.AboutDialog
 import pl.jergro.shopinglist.ui.dialogs.AddShoppingListDialog
 import pl.jergro.shopinglist.ui.dialogs.ShoppingListOptionsDialog
 import pl.jergro.shopinglist.utils.elevateOnScroll
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
     private val viewModel by lazy { ViewModelProviders.of(this).get(MainActivityViewModel::class.java) }
     private val addShoppingListDialog by lazy { AddShoppingListDialog(viewModel, this) }
     private val shoppingListOptionsDialog by lazy { ShoppingListOptionsDialog(viewModel, this, this) }
+    private val infoDialog by lazy { AboutDialog(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,6 +74,10 @@ class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
 
         binding.addShoppingListButton.setOnClickListener {
             addShoppingListDialog.show()
+        }
+
+        binding.infoButton.setOnClickListener {
+            infoDialog.show()
         }
     }
 
