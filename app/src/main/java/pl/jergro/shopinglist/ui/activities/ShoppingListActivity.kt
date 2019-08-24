@@ -17,7 +17,7 @@ import pl.jergro.shopinglist.ui.dialogs.AddOrUpdateProductDialog
 import pl.jergro.shopinglist.utils.elevateOnScroll
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
-class ShoppingListActivity : AppCompatActivity(), ProductsListAdapter.Listener {
+class ShoppingListActivity : BaseActivity(), ProductsListAdapter.Listener {
     private lateinit var binding: ActivityShoppingListBinding
     private lateinit var productsListAdapter: ProductsListAdapter
     private lateinit var shoppingListName: String

@@ -21,7 +21,7 @@ import pl.jergro.shopinglist.utils.hideKeyboard
 import pl.jergro.shopinglist.viewmodels.MainActivityViewModel
 
 
-class MainActivity : AppCompatActivity(), ShoppingListAdapter.Listener {
+class MainActivity : BaseActivity(), ShoppingListAdapter.Listener {
     private lateinit var binding: ActivityMainBinding
     private val shoppingListAdapter = ShoppingListAdapter(ArrayList(), this)
 
