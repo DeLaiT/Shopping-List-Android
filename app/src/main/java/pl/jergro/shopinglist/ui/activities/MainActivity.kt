@@ -15,6 +15,7 @@ import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.ui.adapters.ShoppingListAdapter
 import pl.jergro.shopinglist.ui.dialogs.AboutDialog
 import pl.jergro.shopinglist.ui.dialogs.AddShoppingListDialog
+import pl.jergro.shopinglist.ui.dialogs.SettingsDialog
 import pl.jergro.shopinglist.ui.dialogs.ShoppingListOptionsDialog
 import pl.jergro.shopinglist.utils.elevateOnScroll
 import pl.jergro.shopinglist.utils.hideKeyboard
@@ -29,6 +30,7 @@ class MainActivity : BaseActivity(), ShoppingListAdapter.Listener {
     private val addShoppingListDialog by lazy { AddShoppingListDialog(viewModel, this) }
     private val shoppingListOptionsDialog by lazy { ShoppingListOptionsDialog(viewModel, this, this) }
     private val infoDialog by lazy { AboutDialog(this) }
+    private val settingsDialog by lazy { SettingsDialog(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +80,10 @@ class MainActivity : BaseActivity(), ShoppingListAdapter.Listener {
 
         binding.infoButton.setOnClickListener {
             infoDialog.show()
+        }
+
+        binding.settingsButton.setOnClickListener {
+            settingsDialog.show()
         }
     }
 
