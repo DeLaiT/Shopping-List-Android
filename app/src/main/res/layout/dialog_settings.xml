@@ -13,6 +13,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/medium"
             android:text="Theme"
+            android:textColor="?attr/textActiveColor"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -22,6 +23,7 @@
             android:layout_marginTop="16dp">
 
             <ImageView
+                android:id="@+id/light"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/circle_outline"
@@ -31,6 +33,7 @@
                 android:src="@drawable/ic_round_check_24px" />
 
             <ImageView
+                android:id="@+id/dark"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
@@ -46,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
+            android:textColor="?attr/textActiveColor"
             android:fontFamily="@font/medium"
             android:text="Accent color"
             android:textSize="18sp" />
@@ -58,6 +62,7 @@
             android:layout_marginBottom="24dp">
 
             <ImageView
+                android:id="@+id/pink"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/circle_outline"
@@ -70,6 +75,7 @@
                 android:src="@drawable/ic_round_check_24px" />
 
             <ImageView
+                android:id="@+id/blue"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="12dp"
@@ -83,6 +89,7 @@
                 />
 
             <ImageView
+                android:id="@+id/green"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="12dp"
@@ -96,6 +103,7 @@
                 />
 
             <ImageView
+                android:id="@+id/yellow"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="12dp"
@@ -109,6 +117,7 @@
                 />
 
             <ImageView
+                android:id="@+id/orange"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="12dp"

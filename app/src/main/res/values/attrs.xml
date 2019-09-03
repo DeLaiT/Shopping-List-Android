@@ -6,4 +6,5 @@
     <attr name="accentColor" format="reference"/>
     <attr name="bgColor" format="reference"/>
     <attr name="secondaryAccentColor" format="reference"/>
+    <attr name="dialogStatusBarColor" format="reference"/>
 </resources>

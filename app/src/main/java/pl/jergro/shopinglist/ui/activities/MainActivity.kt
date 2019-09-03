@@ -56,7 +56,6 @@ class MainActivity : BaseActivity(), ShoppingListAdapter.Listener {
         hideKeyboard()
         viewModel.loadShoppingLists()
         setupShoppingListRecyclerView()
-
     }
 
     private fun setupShoppingListRecyclerView() {
@@ -64,7 +63,6 @@ class MainActivity : BaseActivity(), ShoppingListAdapter.Listener {
             layoutManager = LinearLayoutManager(context)
             adapter = shoppingListAdapter
 
-            //`if` prevents from duplicating dividers
             if(itemDecorationCount == 0) {
                 addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             }

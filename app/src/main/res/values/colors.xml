@@ -3,4 +3,6 @@
     <color name="colorPrimary">@color/md_blue_A400</color>
     <color name="colorPrimaryDark">@color/md_blue_A400</color>
     <color name="colorAccent">@color/md_blue_A400</color>
+    <color name="statusBarDialogLight">#66666666</color>
+    <color name="statusBarDialogDark">#66000000</color>
 </resources>

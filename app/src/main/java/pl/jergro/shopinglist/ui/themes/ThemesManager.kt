@@ -7,10 +7,14 @@ import pl.jergro.shopinglist.R
 object ThemesManager {
     private val themes by lazy {
         hashMapOf(
-            DEFAULT_THEME to ThemeModel(R.style.AppTheme, R.style.AppTheme, R.color.md_indigo_A400)
+            DEFAULT_THEME to ThemeModel(R.style.AppTheme, R.style.DarkAppTheme, R.color.md_indigo_A400),
+            "pink" to ThemeModel(R.style.AppTheme, R.style.AppTheme, R.color.md_pink_A400),
+            "green" to ThemeModel(R.style.AppTheme, R.style.AppTheme, R.color.md_green_A400),
+            "yellow" to ThemeModel(R.style.AppTheme, R.style.AppTheme, R.color.md_amber_A400),
+            "orange" to ThemeModel(R.style.AppTheme, R.style.AppTheme, R.color.md_deep_orange_A400)
         )
     }
-    val availableThemes get() = themes.values
+
     private const val PREFS_NAME = "Themes"
     private const val KEY_DARK = "dark"
     private const val KEY_NAME = "name"
