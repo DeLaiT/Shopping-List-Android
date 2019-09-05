@@ -34,8 +34,7 @@
                 android:background="@drawable/circle_outline"
                 android:clickable="true"
                 android:focusable="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_round_check_24px" />
+                android:scaleType="centerInside"/>
 
             <ImageView
                 android:id="@+id/dark"
