@@ -1,7 +1,6 @@
 package pl.jergro.shopinglist.ui.activities
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -15,14 +14,15 @@ import pl.jergro.shopinglist.ui.BottomBarOutlineProvider
 import pl.jergro.shopinglist.ui.adapters.EditProductsListAdapter
 import pl.jergro.shopinglist.ui.adapters.ItemTouchHelperAdapter
 import pl.jergro.shopinglist.ui.adapters.SimpleItemTouchHelperCallback
+import pl.jergro.shopinglist.viewmodels.ShoppingListEditViewModel
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
-class ShoppingListEditActivity : AppCompatActivity() {
+class ShoppingListEditActivity : BaseActivity() {
     private lateinit var binding: ActivityShoppingListEditBinding
     private lateinit var editProductsListAdapter: EditProductsListAdapter
 
     private val viewModel by lazy {
-        ViewModelProviders.of(this).get(ShoppingListViewModel::class.java)
+        ViewModelProviders.of(this).get(ShoppingListEditViewModel::class.java)
     }
 
     private val productsObserver = Observer { products: List<Product> ->

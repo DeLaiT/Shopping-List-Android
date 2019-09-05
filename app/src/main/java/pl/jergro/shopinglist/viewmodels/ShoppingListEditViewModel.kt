@@ -6,7 +6,7 @@ import io.realm.Realm
 import pl.jergro.shopinglist.models.Product
 import pl.jergro.shopinglist.models.ShoppingList
 
-class ShoppingListViewModel : ViewModel() {
+class ShoppingListEditViewModel : ViewModel() {
     val productsList = MutableLiveData<List<Product>>()
     private val realm by lazy { Realm.getDefaultInstance() }
     private lateinit var selectedShoppingList: ShoppingList
@@ -16,25 +16,16 @@ class ShoppingListViewModel : ViewModel() {
             realm.where(ShoppingList::class.java).equalTo("name", shoppingListName).findFirst()!!
 
         productsList.postValue(selectedShoppingList.products)
-
-        selectedShoppingList.products.addChangeListener { products ->
-            productsList.postValue(products)
-        }
     }
 
-    fun addProductToSelectedShoppingList(product: Product) {
+
+    fun updateProductsIndexesByListOrder(products: List<Product>) {
         realm.executeTransaction {
-            selectedShoppingList.products.add(product)
-        }
-    }
+            products.forEachIndexed { index, product ->
+                product.index = index
+            }
 
-    fun updateProduct(product: Product) {
-        realm.executeTransaction {
-            realm.insertOrUpdate(product)
+            realm.copyToRealmOrUpdate(products)
         }
-    }
-
-    fun updateProductStatus(product: Product) {
-        realm.executeTransaction { product.done = !product.done }
     }
 }

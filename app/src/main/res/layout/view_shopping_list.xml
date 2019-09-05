@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/bold"
+            android:fontFamily="@font/medium"
             android:padding="5dp"
             android:text="@{shoppingList.name}"
             android:textColor="?attr/titleColor"

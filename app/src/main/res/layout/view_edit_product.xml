@@ -26,7 +26,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:ellipsize="end"
-            android:fontFamily="@font/bold"
+            android:fontFamily="@font/medium"
             android:maxLines="1"
             android:padding="12dp"
             android:text="@{product.name}"
@@ -45,8 +45,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="2dp"
             android:scaleType="centerInside"
-            android:tint="?attr/textActiveColor"
             android:src="@drawable/ic_round_monetization_on_24px"
+            android:tint="?attr/textActiveColor"
             android:visibility="@{product.price > 0.0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintStart_toStartOf="@+id/productNameText"
             app:layout_constraintTop_toTopOf="@+id/productPriceText" />
@@ -64,6 +64,7 @@
             android:paddingEnd="12dp"
             android:paddingBottom="12dp"
             android:text="@{String.valueOf(product.price)}"
+            android:textColor="?attr/textActiveColor"
             android:textSize="14sp"
             android:visibility="@{product.price > 0.0 ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -71,7 +72,6 @@
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toBottomOf="@+id/productNameText"
             tools:text="0.00"
-            tools:textColor="?attr/textActiveColor"
             tools:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatImageView

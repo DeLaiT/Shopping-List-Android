@@ -9,10 +9,10 @@ object ThemesManager {
     private val themes by lazy {
         hashMapOf(
             DEFAULT_THEME to ThemeModel(R.style.AppTheme, R.style.DarkAppTheme, R.color.md_indigo_A400, DEFAULT_THEME),
-            PINK to ThemeModel(R.style.AppTheme, R.style.AppTheme, R.color.md_pink_A400, PINK),
-            GREEN to ThemeModel(R.style.AppTheme, R.style.AppTheme, R.color.md_green_A400, GREEN),
-            YELLOW to ThemeModel(R.style.AppTheme, R.style.AppTheme, R.color.md_amber_A400, YELLOW),
-            ORANGE to ThemeModel(R.style.AppTheme, R.style.AppTheme, R.color.md_deep_orange_A400, ORANGE)
+            PINK to ThemeModel(R.style.AppTheme, R.style.DarkAppTheme, R.color.md_pink_A400, PINK),
+            GREEN to ThemeModel(R.style.AppTheme, R.style.DarkAppTheme, R.color.md_green_A400, GREEN),
+            YELLOW to ThemeModel(R.style.AppTheme, R.style.DarkAppTheme, R.color.md_amber_A400, YELLOW),
+            ORANGE to ThemeModel(R.style.AppTheme, R.style.DarkAppTheme, R.color.md_deep_orange_A400, ORANGE)
         )
     }
 
@@ -29,9 +29,8 @@ object ThemesManager {
 
     @StyleRes
     fun getCurrentThemeRes(context: Context): Int {
-        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val selectedThemeName = getCurrentThemeName(context)
-        val isDarkTheme = prefs.getBoolean(KEY_DARK, false)
+        val isDarkTheme = isDarkTheme(context)
 
         val theme = themes[selectedThemeName] ?: themes[DEFAULT_THEME]!!
 
@@ -46,6 +45,13 @@ object ThemesManager {
             DEFAULT_THEME
         )!!
     }
+
+    fun isDarkTheme(context: Context): Boolean {
+        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+
+        return prefs.getBoolean(KEY_DARK, false)
+    }
+
 
     fun setThemeName(themeName: String, context: Context) {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)

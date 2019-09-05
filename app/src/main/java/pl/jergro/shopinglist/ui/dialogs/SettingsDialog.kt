@@ -1,14 +1,16 @@
 package pl.jergro.shopinglist.ui.dialogs
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
+import pl.jergro.shopinglist.R
 import pl.jergro.shopinglist.databinding.DialogSettingsBinding
 import pl.jergro.shopinglist.ui.themes.ThemesManager
 import pl.jergro.shopinglist.ui.views.PickColorView
 import timber.log.Timber
 
-class SettingsDialog(context: Context) : BottomSheetDialog(context) {
+class SettingsDialog(val activityContext: Context) : BottomSheetDialog(activityContext) {
     private val binding = DialogSettingsBinding.inflate(LayoutInflater.from(context))
     private val colorViews = ArrayList<PickColorView>()
 
@@ -17,8 +19,26 @@ class SettingsDialog(context: Context) : BottomSheetDialog(context) {
     }
 
     override fun onCreated(){
-        binding.dark.setOnClickListener { ThemesManager.setThemeDark(true, context) }
-        binding.light.setOnClickListener { ThemesManager.setThemeDark(false, context) }
+        if(ThemesManager.isDarkTheme(context)) {
+            binding.light.setImageResource(R.drawable.ic_round_check_24px)
+        } else {
+            binding.dark.setImageResource(R.drawable.ic_round_check_24px)
+        }
+
+        binding.dark.setOnClickListener {
+            binding.light.setImageDrawable(null)
+            binding.dark.setImageResource(R.drawable.ic_round_check_24px)
+
+            ThemesManager.setThemeDark(true, context)
+            (activityContext as Activity).recreate()
+        }
+        binding.light.setOnClickListener {
+            binding.dark.setImageDrawable(null)
+            binding.light.setImageResource(R.drawable.ic_round_check_24px)
+
+            ThemesManager.setThemeDark(false, context)
+            (activityContext as Activity).recreate()
+        }
 
         setupColorViews()
     }
@@ -39,6 +59,7 @@ class SettingsDialog(context: Context) : BottomSheetDialog(context) {
                 colorViews.forEach { it.setChecked(false) }
                 view.setChecked(true)
                 ThemesManager.setThemeName(themeModel.themeName, context)
+                (activityContext as Activity).recreate()
             }
 
             colorViews.add(view)
