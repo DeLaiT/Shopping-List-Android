@@ -10,7 +10,7 @@ import pl.jergro.shopinglist.ui.themes.ThemesManager
 import pl.jergro.shopinglist.ui.views.PickColorView
 import timber.log.Timber
 
-class SettingsDialog(val activityContext: Context) : BottomSheetDialog(activityContext) {
+class SettingsDialog(private val activityContext: Context) : BottomSheetDialog(activityContext) {
     private val binding = DialogSettingsBinding.inflate(LayoutInflater.from(context))
     private val colorViews = ArrayList<PickColorView>()
 
@@ -20,9 +20,9 @@ class SettingsDialog(val activityContext: Context) : BottomSheetDialog(activityC
 
     override fun onCreated(){
         if(ThemesManager.isDarkTheme(context)) {
-            binding.light.setImageResource(R.drawable.ic_round_check_24px)
-        } else {
             binding.dark.setImageResource(R.drawable.ic_round_check_24px)
+        } else {
+            binding.light.setImageResource(R.drawable.ic_round_check_24px)
         }
 
         binding.dark.setOnClickListener {
