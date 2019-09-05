@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+
+        <import type="pl.jergro.shopinglist.BuildConfig" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,9 +32,9 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/circle_outline"
-                android:scaleType="centerInside"
                 android:clickable="true"
                 android:focusable="true"
+                android:scaleType="centerInside"
                 android:src="@drawable/ic_round_check_24px" />
 
             <ImageView
@@ -37,11 +42,11 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
-                android:clickable="true"
-                android:focusable="true"
                 android:background="@drawable/circle_outline"
                 android:backgroundTint="@color/md_grey_800"
-                android:scaleType="centerInside"/>
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="centerInside" />
         </LinearLayout>
 
         <TextView
@@ -49,90 +54,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
-            android:textColor="?attr/textActiveColor"
             android:fontFamily="@font/medium"
             android:text="Accent color"
+            android:textColor="?attr/textActiveColor"
             android:textSize="18sp" />
 
         <LinearLayout
+            android:id="@+id/colorsList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="24dp">
-
-            <ImageView
-                android:id="@+id/pink"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@drawable/circle_outline"
-                android:backgroundTint="@color/md_pink_A400"
-                android:backgroundTintMode="multiply"
-                android:padding="1dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_round_check_24px" />
-
-            <ImageView
-                android:id="@+id/blue"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/circle_outline"
-                android:backgroundTintMode="multiply"
-                android:clickable="true"
-                android:focusable="true"
-                android:backgroundTint="@color/md_blue_A400"
-                android:padding="1dp"
-                android:scaleType="centerInside"
-                />
-
-            <ImageView
-                android:id="@+id/green"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/circle_outline"
-                android:backgroundTint="@color/md_green_A400"
-                android:backgroundTintMode="multiply"
-                android:padding="1dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:scaleType="centerInside"
-                />
-
-            <ImageView
-                android:id="@+id/yellow"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/circle_outline"
-                android:backgroundTintMode="multiply"
-                android:backgroundTint="@color/md_amber_A400"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="1dp"
-                android:scaleType="centerInside"
-                />
-
-            <ImageView
-                android:id="@+id/orange"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/circle_outline"
-                android:backgroundTintMode="multiply"
-                android:clickable="true"
-                android:focusable="true"
-                android:backgroundTint="@color/md_deep_orange_A400"
-                android:padding="1dp"
-                android:scaleType="centerInside" />
-        </LinearLayout>
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal"/>
     </LinearLayout>
-
-    <data>
-
-        <import type="pl.jergro.shopinglist.BuildConfig" />
-    </data>
 </layout>

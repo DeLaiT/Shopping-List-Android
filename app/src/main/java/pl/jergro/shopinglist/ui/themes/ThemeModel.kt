@@ -7,5 +7,6 @@ import androidx.annotation.StyleRes
 class ThemeModel(
     @StyleRes val themeLight: Int,
     @StyleRes val themeDark: Int,
-    @ColorRes val themeColor: Int
+    @ColorRes val themeColor: Int,
+    val themeName: String
 )
