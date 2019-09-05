@@ -31,6 +31,7 @@ class SettingsDialog(private val activityContext: Context) : BottomSheetDialog(a
 
             ThemesManager.setThemeDark(true, context)
             (activityContext as Activity).recreate()
+            dismiss()
         }
         binding.light.setOnClickListener {
             binding.dark.setImageDrawable(null)
@@ -38,6 +39,7 @@ class SettingsDialog(private val activityContext: Context) : BottomSheetDialog(a
 
             ThemesManager.setThemeDark(false, context)
             (activityContext as Activity).recreate()
+            dismiss()
         }
 
         setupColorViews()
@@ -60,6 +62,7 @@ class SettingsDialog(private val activityContext: Context) : BottomSheetDialog(a
                 view.setChecked(true)
                 ThemesManager.setThemeName(themeModel.themeName, context)
                 (activityContext as Activity).recreate()
+                dismiss()
             }
 
             colorViews.add(view)

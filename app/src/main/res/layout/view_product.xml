@@ -47,12 +47,12 @@
             android:id="@+id/imageView"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginStart="20dp"
             android:layout_marginTop="2dp"
+            android:layout_marginStart="10dp"
             android:scaleType="centerInside"
             android:src="@drawable/ic_round_monetization_on_24px"
             android:visibility="@{product.price > 0.0 ? View.VISIBLE : View.GONE}"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/productNameText"
             app:layout_constraintTop_toTopOf="@+id/productPriceText"
             app:productPriceIconTintByDone="@{product.done}" />
 

@@ -40,27 +40,33 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Monday shopping" />
 
-        <TextView
-            android:id="@+id/itemsDoneText"
+        <ImageView
+            android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="4dp"
+            android:src="@drawable/ic_round_check_circle_24px"
+            android:tint="?attr/textActiveColor"
+            app:layout_constraintBottom_toBottomOf="@+id/itemsDoneText"
+            app:layout_constraintStart_toStartOf="@+id/nameText"
+            app:layout_constraintTop_toTopOf="@+id/itemsDoneText" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/itemsDoneText"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:drawableStart="@drawable/ic_round_check_circle_24px"
-            android:drawablePadding="4dp"
-            android:drawableTint="?attr/textActiveColor"
             android:fontFamily="@font/regular"
             android:gravity="center_vertical"
             android:padding="5dp"
-            android:text="10 / 21"
             android:textColor="?attr/textActiveColor"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/progressBar"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nameText" />
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/nameText"
+            tools:text="10 / 21" />
 
         <ImageButton
             android:id="@+id/imageView2"
