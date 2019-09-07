@@ -8,4 +8,6 @@
     <string name="add">Add</string>
     <string name="product_name">Product name</string>
     <string name="price">Price</string>
+
+    <string name="shareUsing">Share using</string>
 </resources>

@@ -80,6 +80,13 @@ class ShoppingListActivity : BaseActivity(), ProductsListAdapter.Listener {
 
     private fun shareShoppingList() {
         val productsListDataForSharing = viewModel.getProductsListForSharing(shoppingListName)
+        val intent = Intent(Intent.ACTION_SEND).apply {
+            type = "text/plain"
+            putExtra(Intent.EXTRA_SUBJECT, "Shopping list '$shoppingListName'")
+            putExtra(Intent.EXTRA_TEXT, productsListDataForSharing)
+        }
+        startActivity(Intent.createChooser(intent, getString(R.string.shareUsing)))
+
         Timber.v(productsListDataForSharing)
     }
 
