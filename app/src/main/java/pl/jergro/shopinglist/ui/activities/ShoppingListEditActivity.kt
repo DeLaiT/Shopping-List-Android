@@ -15,7 +15,6 @@ import pl.jergro.shopinglist.ui.adapters.EditProductsListAdapter
 import pl.jergro.shopinglist.ui.adapters.ItemTouchHelperAdapter
 import pl.jergro.shopinglist.ui.adapters.SimpleItemTouchHelperCallback
 import pl.jergro.shopinglist.viewmodels.ShoppingListEditViewModel
-import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
 
 class ShoppingListEditActivity : BaseActivity() {
     private lateinit var binding: ActivityShoppingListEditBinding
@@ -88,6 +87,6 @@ class ShoppingListEditActivity : BaseActivity() {
 
     override fun finish() {
         super.finish()
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        overridePendingTransition(R.anim.still, R.anim.fade_out)
     }
 }

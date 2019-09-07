@@ -2,7 +2,6 @@ package pl.jergro.shopinglist.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -94,6 +93,6 @@ class MainActivity : BaseActivity(), ShoppingListAdapter.Listener {
         val intent = Intent(this, ShoppingListActivity::class.java)
         intent.putExtra("selectedShoppingList", shoppingList.name)
         startActivity(intent)
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        overridePendingTransition(R.anim.fade_in, R.anim.still)
     }
 }
