@@ -70,7 +70,7 @@
             android:layout_height="56dp"
             android:background="?attr/bgColor"
             android:elevation="3dp"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toTopOf="@id/adContainer">
 
             <ImageView
                 android:id="@+id/settingsButton"
@@ -99,5 +99,14 @@
                 android:src="@drawable/ic_round_info_24px"
                 android:tint="?attr/textActiveColor" />
         </RelativeLayout>
+
+        <pl.jergro.shopinglist.ui.views.BottomBannerAd
+            android:id="@+id/adContainer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="?attr/bgColor"
+            android:elevation="3dp"
+            android:paddingTop="2dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

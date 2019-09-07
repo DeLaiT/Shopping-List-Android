@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="admob_bottom_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+</resources>
