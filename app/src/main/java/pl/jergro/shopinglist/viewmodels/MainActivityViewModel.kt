@@ -1,5 +1,6 @@
 package pl.jergro.shopinglist.viewmodels
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,14 +18,18 @@ class MainActivityViewModel : ViewModel() {
     private val _shopOptions = MutableLiveData<List<ShoppingListOptionsItemConfiguration>>()
     private val _msgFeedback = MutableLiveData<String>()
 
-    fun shoppingOptions() {
+    fun shoppingOptions(context: Context) {
         val shopOptions = listOf(
-            ShoppingListOptionsItemConfiguration(0, R.drawable.ic_share, "Share", R.color.md_grey_900),
-            ShoppingListOptionsItemConfiguration(1, R.drawable.ic_restore, "Reset products", R.color.md_amber_A400),
+            ShoppingListOptionsItemConfiguration(
+                1,
+                R.drawable.ic_restore,
+                context.getString(R.string.resetProducts),
+                R.color.md_amber_A400
+            ),
             ShoppingListOptionsItemConfiguration(
                 2,
                 R.drawable.ic_round_delete_forever_24px,
-                "Delete forever",
+                context.getString(R.string.deleteForever),
                 R.color.md_red_A400
             )
         )
@@ -32,7 +37,8 @@ class MainActivityViewModel : ViewModel() {
     }
 
     fun shoppingListExistsWithName(name: String): Boolean {
-        val foundShoppingList = _realm.where(ShoppingList::class.java).equalTo("name", name).findFirst()
+        val foundShoppingList =
+            _realm.where(ShoppingList::class.java).equalTo("name", name).findFirst()
 
         return foundShoppingList != null
     }

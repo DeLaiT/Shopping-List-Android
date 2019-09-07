@@ -38,7 +38,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:lineSpacingMultiplier="1.2"
-            android:text="Created by Jeremiasz Grodzicki\nwith help from Vicor Vicari"
+            android:text="@string/appDescription"
             android:textColor="?attr/textActiveColor" />
 
     </LinearLayout>

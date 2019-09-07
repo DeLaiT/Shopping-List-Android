@@ -17,7 +17,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/medium"
-            android:text="Theme"
+            android:text="@string/theme"
             android:textColor="?attr/textActiveColor"
             android:textSize="18sp" />
 
@@ -54,7 +54,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/medium"
-            android:text="Accent color"
+            android:text="@string/accentColor"
             android:textColor="?attr/textActiveColor"
             android:textSize="18sp" />
 

@@ -29,7 +29,7 @@ class ShoppingListOptionsDialog(
     override fun getView(): View = binding.root
 
     override fun onCreated() {
-        viewModel.shoppingOptions()
+        viewModel.shoppingOptions(context)
         observers()
         binding.recyclerOptions.apply {
             layoutManager = LinearLayoutManager(context)

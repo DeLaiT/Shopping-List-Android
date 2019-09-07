@@ -1,14 +1,21 @@
 <resources>
     <string name="app_name">Shopping List</string>
 
-    <string name="add_product">Add product</string>
 
     <!--ProductView-->
     <string name="update">Update</string>
     <string name="add">Add</string>
     <string name="product_name">Product name</string>
     <string name="price">Price</string>
-
     <string name="shareUsing">Share using</string>
     <string name="adReservedSpace">Ad reserved space</string>
+    <string name="shoppingLists">Shopping Lists</string>
+    <string name="addShoppingList">Add shopping list</string>
+    <string name="add_product">Add product</string>
+    <string name="appDescription">Created by Jeremiasz Grodzicki\nwith help from Vicor Vicari</string>
+    <string name="shoppingListName">Shopping list name</string>
+    <string name="theme">Theme</string>
+    <string name="accentColor">Accent Color</string>
+    <string name="resetProducts">Reset products</string>
+    <string name="deleteForever">Delete forever</string>
 </resources>

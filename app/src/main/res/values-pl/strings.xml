@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lista zakupów</string>
+
+    <string name="update">Aktualizuj</string>
+    <string name="add">Dodaj</string>
+    <string name="product_name">Nazwa produktu</string>
+    <string name="price">Cena</string>
+    <string name="shareUsing">Udostępnij używając</string>
+    <string name="adReservedSpace">Przestrzeń reklamowa</string>
+    <string name="shoppingLists">Listy zakupów</string>
+    <string name="addShoppingList">Dodaj listę zakupów</string>
+    <string name="add_product">Dodaj produkt</string>
+    <string name="appDescription">Created by Jeremiasz Grodzicki\nwith help from Vicor Vicari</string>
+    <string name="shoppingListName">Nazwa listy zakupów</string>
+    <string name="theme">Motyw</string>
+    <string name="accentColor">Kolor</string>
+    <string name="resetProducts">Resetuj produkty</string>
+    <string name="deleteForever">Usuń na zawsze</string>
+</resources>
