@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">?attr/accentColor</item>
+        <item name="colorPrimaryDark">?attr/accentColor</item>
+        <item name="colorAccent">?attr/accentColor</item>
+        <item name="android:statusBarColor">?attr/bgColor</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:navigationBarColor">?attr/bgColor</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
+        <item name="android:windowBackground">?attr/bgColor</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <item name="titleColor">@color/md_black_1000</item>
+        <item name="textActiveColor">@color/md_grey_600</item>
+        <item name="textDisabledColor">@color/md_grey_400</item>
+        <item name="accentColor">@color/md_indigo_A400</item>
+        <item name="bgColor">@color/md_white_1000</item>
+        <item name="secondaryAccentColor">@color/md_indigo_50</item>
+        <item name="dialogStatusBarColor">@color/statusBarDialogLight</item>
+    </style>
+
+    <style name="DarkAppTheme" parent="AppTheme">
+        <item name="titleColor">@color/md_grey_300</item>
+        <item name="textActiveColor">@color/md_grey_600</item>
+        <item name="textDisabledColor">@color/md_grey_700</item>
+        <item name="accentColor">@color/md_indigo_A400</item>
+        <item name="bgColor">@color/md_grey_900</item>
+        <item name="secondaryAccentColor">@color/md_indigo_900</item>
+        <item name="dialogStatusBarColor">@color/statusBarDialogDark</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+</resources>

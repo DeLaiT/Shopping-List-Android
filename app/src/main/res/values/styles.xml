@@ -8,7 +8,7 @@
         <item name="colorAccent">?attr/accentColor</item>
         <item name="android:statusBarColor">?attr/bgColor</item>
         <item name="android:windowTranslucentStatus">false</item>
-        <item name="android:navigationBarColor">?attr/bgColor</item>
+        <item name="android:navigationBarColor">#000</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
         <item name="android:windowBackground">?attr/bgColor</item>
@@ -22,6 +22,19 @@
         <item name="dialogStatusBarColor">@color/statusBarDialogLight</item>
     </style>
 
+    <style name="DarkAppTheme" parent="AppTheme">
+        <item name="titleColor">@color/md_grey_300</item>
+        <item name="textActiveColor">@color/md_grey_600</item>
+        <item name="textDisabledColor">@color/md_grey_700</item>
+        <item name="accentColor">@color/md_indigo_A400</item>
+        <item name="bgColor">@color/md_grey_900</item>
+        <item name="secondaryAccentColor">@color/md_indigo_900</item>
+        <item name="dialogStatusBarColor">@color/statusBarDialogDark</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+
     <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/AppModalStyle</item>
         <item name="android:windowIsFloating">false</item>
@@ -34,16 +47,6 @@
         <item name="android:background">@drawable/bottom_dialog_background</item>
     </style>
 
-    <style name="DarkAppTheme" parent="AppTheme">
-        <item name="titleColor">@color/md_grey_300</item>
-        <item name="textActiveColor">@color/md_grey_600</item>
-        <item name="textDisabledColor">@color/md_grey_700</item>
-        <item name="accentColor">@color/md_indigo_A400</item>
-        <item name="bgColor">@color/md_grey_900</item>
-        <item name="secondaryAccentColor">@color/md_indigo_900</item>
-        <item name="dialogStatusBarColor">@color/statusBarDialogDark</item>
-        <item name="android:windowLightStatusBar">false</item>
-    </style>
 
     <style name="YellowLightTheme" parent="AppTheme">
         <item name="accentColor">@color/md_amber_A400</item>
