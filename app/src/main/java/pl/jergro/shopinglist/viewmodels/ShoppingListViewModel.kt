@@ -34,6 +34,16 @@ class ShoppingListViewModel : ViewModel() {
         }
     }
 
+    fun getProductsListForSharing(shoppingListName: String) : String{
+        val productsStringBuilder = StringBuilder()
+
+        productsList.value?.forEach {
+            productsStringBuilder.append(" - ${it.name}\n")
+        }
+
+        return "Shopping list '${shoppingListName}'\n${productsStringBuilder}"
+    }
+
     fun updateProductStatus(product: Product) {
         realm.executeTransaction { product.done = !product.done }
     }

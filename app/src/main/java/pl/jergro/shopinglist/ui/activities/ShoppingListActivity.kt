@@ -16,6 +16,7 @@ import pl.jergro.shopinglist.ui.adapters.ProductsListAdapter
 import pl.jergro.shopinglist.ui.dialogs.AddOrUpdateProductDialog
 import pl.jergro.shopinglist.utils.elevateOnScroll
 import pl.jergro.shopinglist.viewmodels.ShoppingListViewModel
+import timber.log.Timber
 
 class ShoppingListActivity : BaseActivity(), ProductsListAdapter.Listener {
     private lateinit var binding: ActivityShoppingListBinding
@@ -40,7 +41,6 @@ class ShoppingListActivity : BaseActivity(), ProductsListAdapter.Listener {
 
         binding.shoppingListNameText.text = shoppingListName
         binding.backButton.setOnClickListener { finish() }
-        binding.editButton.setOnClickListener { startShoppingListEditActivity() }
 
         setupBottomBar()
         setupRecyclerView()
@@ -59,7 +59,8 @@ class ShoppingListActivity : BaseActivity(), ProductsListAdapter.Listener {
 
     private fun setupBottomBar() {
         binding.bottomBar.outlineProvider = BottomBarOutlineProvider()
-
+        binding.editButton.setOnClickListener { startShoppingListEditActivity() }
+        binding.shareButton.setOnClickListener { shareShoppingList() }
         binding.addProductButton.setOnClickListener { AddOrUpdateProductDialog(viewModel, this).show() }
     }
 
@@ -75,6 +76,11 @@ class ShoppingListActivity : BaseActivity(), ProductsListAdapter.Listener {
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             adapter = productsListAdapter
         }
+    }
+
+    private fun shareShoppingList() {
+        val productsListDataForSharing = viewModel.getProductsListForSharing(shoppingListName)
+        Timber.v(productsListDataForSharing)
     }
 
     override fun onProductItemClicked(product: Product) {

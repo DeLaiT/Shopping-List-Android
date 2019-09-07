@@ -36,12 +36,52 @@
 
     <style name="DarkAppTheme" parent="AppTheme">
         <item name="titleColor">@color/md_grey_300</item>
-        <item name="textActiveColor">@color/md_grey_500</item>
+        <item name="textActiveColor">@color/md_grey_600</item>
         <item name="textDisabledColor">@color/md_grey_700</item>
         <item name="accentColor">@color/md_indigo_A400</item>
         <item name="bgColor">@color/md_grey_900</item>
         <item name="secondaryAccentColor">@color/md_indigo_900</item>
         <item name="dialogStatusBarColor">@color/statusBarDialogDark</item>
         <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="YellowLightTheme" parent="AppTheme">
+        <item name="accentColor">@color/md_amber_A400</item>
+        <item name="secondaryAccentColor">@color/md_amber_50</item>
+    </style>
+
+    <style name="YellowDarkTheme" parent="DarkAppTheme">
+        <item name="accentColor">@color/md_amber_A400</item>
+        <item name="secondaryAccentColor">@color/secondaryYellowDark</item>
+    </style>
+
+    <style name="OrangeLightTheme" parent="AppTheme">
+        <item name="accentColor">@color/md_deep_orange_A400</item>
+        <item name="secondaryAccentColor">@color/md_deep_orange_50</item>
+    </style>
+
+    <style name="OrangeDarkTheme" parent="DarkAppTheme">
+        <item name="accentColor">@color/md_deep_orange_A400</item>
+        <item name="secondaryAccentColor">@color/secondaryOrangeDark</item>
+    </style>
+
+    <style name="GreenLightTheme" parent="AppTheme">
+        <item name="accentColor">@color/md_green_A400</item>
+    <item name="secondaryAccentColor">@color/md_green_50</item>
+    </style>
+
+    <style name="GreenDarkTheme" parent="DarkAppTheme">
+        <item name="accentColor">@color/md_green_A400</item>
+        <item name="secondaryAccentColor">@color/secondaryGreenDark</item>
+    </style>
+
+    <style name="PinkLightTheme" parent="AppTheme">
+        <item name="accentColor">@color/md_pink_A400</item>
+        <item name="secondaryAccentColor">@color/md_pink_50</item>
+    </style>
+
+    <style name="PinkDarkTheme" parent="DarkAppTheme">
+        <item name="accentColor">@color/md_pink_A400</item>
+        <item name="secondaryAccentColor">@color/secondaryPinkDark</item>
     </style>
 </resources>

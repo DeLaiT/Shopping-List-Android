@@ -107,7 +107,7 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <ImageView
-                android:id="@+id/settingsButton"
+                android:id="@+id/shareButton"
                 style="@style/Widget.AppCompat.Toolbar.Button.Navigation"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
@@ -117,7 +117,7 @@
                 android:contentDescription="@null"
                 android:focusable="true"
                 android:padding="12dp"
-                android:src="@drawable/ic_round_settings_24px"
+                android:src="@drawable/ic_share_24px"
                 android:tint="?attr/textActiveColor" />
 
             <ImageView

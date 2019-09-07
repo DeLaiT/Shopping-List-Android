@@ -9,10 +9,10 @@ object ThemesManager {
     private val themes by lazy {
         hashMapOf(
             DEFAULT_THEME to ThemeModel(R.style.AppTheme, R.style.DarkAppTheme, R.color.md_indigo_A400, DEFAULT_THEME),
-            PINK to ThemeModel(R.style.AppTheme, R.style.DarkAppTheme, R.color.md_pink_A400, PINK),
-            GREEN to ThemeModel(R.style.AppTheme, R.style.DarkAppTheme, R.color.md_green_A400, GREEN),
-            YELLOW to ThemeModel(R.style.AppTheme, R.style.DarkAppTheme, R.color.md_amber_A400, YELLOW),
-            ORANGE to ThemeModel(R.style.AppTheme, R.style.DarkAppTheme, R.color.md_deep_orange_A400, ORANGE)
+            PINK to ThemeModel(R.style.PinkLightTheme, R.style.PinkDarkTheme, R.color.md_pink_A400, PINK),
+            GREEN to ThemeModel(R.style.GreenLightTheme, R.style.GreenDarkTheme, R.color.md_green_A400, GREEN),
+            YELLOW to ThemeModel(R.style.YellowLightTheme, R.style.YellowDarkTheme, R.color.md_amber_A400, YELLOW),
+            ORANGE to ThemeModel(R.style.OrangeLightTheme, R.style.OrangeDarkTheme, R.color.md_deep_orange_A400, ORANGE)
         )
     }
 

@@ -5,4 +5,10 @@
     <color name="colorAccent">@color/md_blue_A400</color>
     <color name="statusBarDialogLight">#66666666</color>
     <color name="statusBarDialogDark">#66000000</color>
+
+    <color name="secondaryYellowDark">#4D3700</color>
+    <color name="secondaryGreenDark">#005027</color>
+    <color name="secondaryOrangeDark">#52180A</color>
+    <color name="secondaryPinkDark">#530024</color>
+
 </resources>
