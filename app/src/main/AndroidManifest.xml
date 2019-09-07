@@ -29,5 +29,9 @@
             android:name=".ui.activities.ShoppingListEditActivity"
             android:windowSoftInputMode="stateAlwaysHidden"
             android:screenOrientation="portrait"/>
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8336458854543435~6363756899"/>
     </application>
 </manifest>
