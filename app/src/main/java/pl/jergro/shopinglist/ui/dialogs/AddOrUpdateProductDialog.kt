@@ -13,13 +13,10 @@ import java.util.*
 
 class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, context: Context) :
     BottomSheetDialog(context) {
-    private lateinit var binding: DialogAddProductBinding
+    private var binding = DialogAddProductBinding.inflate(layoutInflater, null, false)
     private var editedProduct: Product? = null
 
     override fun getView(): View {
-        val layoutInflater = LayoutInflater.from(context)
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.dialog_add_product, null, false)
-
         return binding.root
     }
 
