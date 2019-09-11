@@ -60,7 +60,10 @@ class ShoppingListActivity : BaseActivity(), ProductsListAdapter.Listener {
         binding.bottomBar.outlineProvider = BottomBarOutlineProvider()
         binding.editButton.setOnClickListener { startShoppingListEditActivity() }
         binding.shareButton.setOnClickListener { shareShoppingList() }
-        binding.addProductButton.setOnClickListener { AddOrUpdateProductDialog(viewModel, this).show() }
+        binding.addProductButton.setOnClickListener {
+            addProductDialog.setProduct(null)
+            addProductDialog.show()
+        }
     }
 
     private fun setupActionBar() {

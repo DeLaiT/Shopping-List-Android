@@ -21,11 +21,17 @@ class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, con
     }
 
     override fun onCreated() {
+        binding.addButton.setOnClickListener {
+            tryToAddOrUpdateProduct()
+        }
+    }
+
+    private fun updateUI() {
         binding.isEditing = editedProduct != null
 
         if (binding.isEditing) {
             binding.newProductNameEditText.setText(editedProduct?.name)
-            if(editedProduct?.price != 0.0) {
+            if (editedProduct?.price != 0.0) {
                 binding.newProductPriceEditText.setText(editedProduct?.price.toString())
             } else {
                 binding.newProductPriceEditText.text?.clear()
@@ -34,10 +40,11 @@ class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, con
             binding.newProductNameEditText.text?.clear()
             binding.newProductPriceEditText.text?.clear()
         }
+    }
 
-        binding.addButton.setOnClickListener {
-            tryToAddOrUpdateProduct()
-        }
+    override fun show() {
+        updateUI()
+        super.show()
     }
 
     private fun tryToAddOrUpdateProduct() {
@@ -49,13 +56,24 @@ class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, con
         }
 
         if (productName.isBlank())
-            Toast.makeText(context, "Please enter correct shopping list name", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "Please enter correct shopping list name",
+                Toast.LENGTH_SHORT
+            ).show()
         else {
             if (editedProduct != null) {
-                val product = Product(editedProduct?.id!!, productName, false, productPrice.toDouble(), 0)
+                val product =
+                    Product(editedProduct?.id!!, productName, false, productPrice.toDouble(), 0)
                 viewModel.updateProduct(product)
             } else {
-                val product = Product(UUID.randomUUID().toString(), productName, false, productPrice.toDouble(), 0)
+                val product = Product(
+                    UUID.randomUUID().toString(),
+                    productName,
+                    false,
+                    productPrice.toDouble(),
+                    0
+                )
                 viewModel.addProductToSelectedShoppingList(product)
             }
 
@@ -63,7 +81,7 @@ class AddOrUpdateProductDialog(private val viewModel: ShoppingListViewModel, con
         }
     }
 
-    fun setProduct(product: Product) {
-        this.editedProduct = product
+    fun setProduct(product: Product?) {
+        editedProduct = product
     }
 }
