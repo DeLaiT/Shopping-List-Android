@@ -11,7 +11,6 @@ import android.widget.TextView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
-import pl.jergro.shopinglist.BuildConfig
 import pl.jergro.shopinglist.R
 
 class BottomBannerAd(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
@@ -48,10 +47,8 @@ class BottomBannerAd(context: Context, attrs: AttributeSet) : FrameLayout(contex
     }
 
     private fun loadAds() {
-        val adRequest = if (BuildConfig.DEBUG)
-            AdRequest.Builder().addTestDevice("CCFEBCA3319D228F3365470FD5424D98").build()
-        else
-            AdRequest.Builder().build()
+        val adRequest = AdRequest.Builder().addTestDevice("CCFEBCA3319D228F3365470FD5424D98").build()
+
         adView.loadAd(adRequest)
     }
 }
